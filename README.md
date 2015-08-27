@@ -1,4 +1,6 @@
 # ionline
+http://ionline.azurewebsites.net
+
 A simple ASP.NET MVC application allow internet users to leave a message.
 
 #Requirements:
@@ -10,6 +12,3 @@ A simple ASP.NET MVC application allow internet users to leave a message.
 - Deploy the app on Microsoft Azure
 - Use EF code first with migration
 - Use MS SQL Server DB
-
-#Url
-http://ionline.azurewebsites.net
