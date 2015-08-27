@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Rabbit.IWasThere.App_Start
+namespace Rabbit.IOnline.App_Start
 {
     public static class WebApiConfig
     {

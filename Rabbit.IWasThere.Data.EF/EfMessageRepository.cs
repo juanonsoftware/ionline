@@ -1,4 +1,5 @@
 ﻿using Rabbit.IWasThere.Domain;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -38,6 +39,11 @@ namespace Rabbit.IWasThere.Data.EF
         public int Count()
         {
             return _context.Messages.Count();
+        }
+
+        public Message GetById(Guid id)
+        {
+            return _context.Messages.First(x => x.Id == id);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace Rabbit.IWasThere.App_Start
+namespace Rabbit.IOnline.App_Start
 {
     public class BundleConfig
     {
@@ -18,7 +18,8 @@ namespace Rabbit.IWasThere.App_Start
                 .Include("~/Content/bootstrap.css"));
 
             bundles.Add(new StyleBundle("~/Content/css")
-                .Include("~/Content/jumbotron-narrow.css", "~/Content/site.css"));
+                .Include("~/Content/jumbotron-narrow.css",
+                    "~/Content/site.css"));
         }
     }
 }

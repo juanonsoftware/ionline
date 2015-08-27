@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Rabbit.IWasThere.App_Start
+namespace Rabbit.IOnline.App_Start
 {
     public class FilterConfig
     {

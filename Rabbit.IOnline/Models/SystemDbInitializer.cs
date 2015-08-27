@@ -1,10 +1,7 @@
-﻿using Rabbit.IWasThere.Data.EF;
-using Rabbit.IWasThere.Domain;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using Rabbit.IWasThere.Data.EF;
 
-namespace Rabbit.IWasThere.Models
+namespace Rabbit.IOnline.Models
 {
     public class SystemDbInitializer : CreateDatabaseIfNotExists<AppDbContext>
     {        

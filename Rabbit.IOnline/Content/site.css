@@ -58,3 +58,15 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+
+.padding-10 {
+    padding: 10px 10px 10px 10px;
+}
+
+.width-30p {
+    width: 30%;
+}
+
+.width-70p {
+    width: 70%;
+}

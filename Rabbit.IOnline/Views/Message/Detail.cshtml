@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Detail";
+}
+
+@using System.Globalization
+@model Rabbit.IOnline.Models.ViewModels.MessageViewModel
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Message")">List messages</a></li>
+    <li class="active">Message created at @Model.CreatedAt.ToString(CultureInfo.InvariantCulture)</li>
+</ol>
+
+<div class="well">
+    @Model.Body
+</div>

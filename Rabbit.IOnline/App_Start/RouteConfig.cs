@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Rabbit.IWasThere.App_Start
+namespace Rabbit.IOnline.App_Start
 {
     public class RouteConfig
     {
