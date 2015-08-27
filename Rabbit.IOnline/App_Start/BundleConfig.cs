@@ -20,6 +20,10 @@ namespace Rabbit.IOnline.App_Start
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/jumbotron-narrow.css",
                     "~/Content/site.css"));
+
+            bundles.Add(
+                new StyleBundle("~/Content/cssbox", "//raw.githubusercontent.com/netvietdev/cssbox/master/cssbox.css")
+                    .Include("~/Content/cssbox.css"));
         }
     }
 }
