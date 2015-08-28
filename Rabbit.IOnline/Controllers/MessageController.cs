@@ -3,6 +3,7 @@ using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.EF;
 using Rabbit.IWasThere.Domain;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Rabbit.IOnline.Controllers
@@ -55,7 +56,13 @@ namespace Rabbit.IOnline.Controllers
             var messages = _messageRepository.GetMessages(page, size);
             var vm = new ListViewModel()
             {
-                MessageCount = _messageRepository.Count()
+                MessageCount = _messageRepository.Count(),
+                Messages = messages.Select(x => new MessageViewModel()
+                {
+                    Id = x.Id,
+                    Body = x.Body,
+                    CreatedAt = x.CreatedAt
+                }).ToList()
             };
 
             return View(vm);
