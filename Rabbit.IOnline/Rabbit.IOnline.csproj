@@ -192,6 +192,9 @@
     <Content Include="Views\Message\List.cshtml" />
     <Content Include="Views\Home\MessageEditForm.cshtml" />
     <Content Include="Views\Message\Detail.cshtml" />
+    <Content Include="Views\Message\_MessageList.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
