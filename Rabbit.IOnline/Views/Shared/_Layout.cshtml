@@ -11,6 +11,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/cssbox")
+
     <script type="text/javascript">
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -31,7 +35,7 @@
             <nav>
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation" class="active"><a href="/">Home</a></li>
-                    <li role="presentation"><a href="@Url.Action("About")">About</a></li>
+                    <li role="presentation"><a href="@Url.Action("About", "Home")">About</a></li>
                 </ul>
             </nav>
             <h3 class="text-muted">IOnline Space</h3>
@@ -39,10 +43,6 @@
 
         @RenderBody()
     </div>
-
-    @Styles.Render("~/Content/bootstrap")
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/cssbox")
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
