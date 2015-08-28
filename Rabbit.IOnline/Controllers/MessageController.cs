@@ -6,6 +6,8 @@ using Rabbit.IWasThere.Domain;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using Recaptcha.Web;
+using Recaptcha.Web.Mvc;
 
 namespace Rabbit.IOnline.Controllers
 {
@@ -19,8 +21,23 @@ namespace Rabbit.IOnline.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(MessageViewModel message)
+        public ActionResult Save(EditMessageViewModel message)
         {
+            var recaptchaHelper = this.GetRecaptchaVerificationHelper();
+
+            if (String.IsNullOrEmpty(recaptchaHelper.Response))
+            {
+                ModelState.AddModelError("", "Captcha answer cannot be empty.");
+                return View(message);
+            }
+
+            var recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
+            if (recaptchaResult != RecaptchaVerificationResult.Success)
+            {
+                ModelState.AddModelError("", "Incorrect captcha answer.");
+                return View(message);
+            }
+
             if (ModelState.IsValid)
             {
                 var msgEntity = new Message()
