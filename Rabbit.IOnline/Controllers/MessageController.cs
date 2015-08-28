@@ -63,13 +63,19 @@ namespace Rabbit.IOnline.Controllers
             });
 
             var pagedList = new StaticPagedList<MessageViewModel>(messages, pageIndex, pageSize, messageCount);
-
             var vm = new ListViewModel()
             {
                 Messages = pagedList
             };
 
-            return View(vm);
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_MessageList", vm);
+            }
+            else
+            {
+                return View(vm);
+            }
         }
     }
 }

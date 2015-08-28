@@ -1,5 +1,4 @@
-﻿@using PagedList
-@using PagedList.Mvc
+﻿@using PagedList.Mvc
 @using Rabbit.IOnline.Models.ViewModels
 
 @model ListViewModel
@@ -30,4 +29,11 @@
         }
     </tbody>
 </table>
-@Html.PagedListPager(Model.Messages, page => Url.Action("List", "Message", new { p = page }))
+
+@Html.PagedListPager(Model.Messages,
+    page => Url.Action("List", "Message", new { p = page }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+    {
+        HttpMethod = "GET",
+        UpdateTargetId = "grid-list",
+    }))
