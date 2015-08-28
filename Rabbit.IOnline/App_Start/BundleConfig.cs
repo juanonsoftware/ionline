@@ -14,7 +14,7 @@ namespace Rabbit.IOnline.App_Start
             bundles.Add(new ScriptBundle("~/bundles/bootstrap", "//ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js")
                 .Include("~/Scripts/bootstrap.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery.unobtrusive-ajax")
+            bundles.Add(new ScriptBundle("~/bundles/jquery-unobtrusive-ajax")
                 .Include("~/Scripts/jquery.unobtrusive-*"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css")
