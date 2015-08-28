@@ -1,4 +1,5 @@
-﻿using Rabbit.IOnline.Models.ViewModels;
+﻿using PagedList;
+using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.EF;
 using Rabbit.IWasThere.Domain;
@@ -50,19 +51,22 @@ namespace Rabbit.IOnline.Controllers
 
         public ActionResult List(int? p, int? s)
         {
-            var page = p.HasValue ? p.Value : 0;
-            var size = s.HasValue ? s.Value : 20;
+            var pageIndex = p.HasValue ? p.Value : 1;
+            var pageSize = s.HasValue ? s.Value : 5;
 
-            var messages = _messageRepository.GetMessages(page, size);
+            var messageCount = _messageRepository.Count();
+            var messages = _messageRepository.GetMessages(pageIndex - 1, pageSize).Select(x => new MessageViewModel()
+            {
+                Id = x.Id,
+                Body = x.Body,
+                CreatedAt = x.CreatedAt
+            });
+
+            var pagedList = new StaticPagedList<MessageViewModel>(messages, pageIndex, pageSize, messageCount);
+
             var vm = new ListViewModel()
             {
-                MessageCount = _messageRepository.Count(),
-                Messages = messages.Select(x => new MessageViewModel()
-                {
-                    Id = x.Id,
-                    Body = x.Body,
-                    CreatedAt = x.CreatedAt
-                }).ToList()
+                Messages = pagedList
             };
 
             return View(vm);

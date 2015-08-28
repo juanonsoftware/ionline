@@ -15,10 +15,10 @@ namespace Rabbit.IWasThere.Data.EF
             _context = new AppDbContext();
         }
 
-        public IList<Message> GetMessages(int pageIndex, int pageSize)
+        public IEnumerable<Message> GetMessages(int pageIndex, int pageSize)
         {
             var offset = pageIndex * pageSize;
-            return _context.Messages.OrderByDescending(x => x.CreatedAt).Skip(() => offset).Take(() => pageSize).ToList();
+            return _context.Messages.OrderByDescending(x => x.CreatedAt).Skip(() => offset).Take(() => pageSize);
         }
 
         public void Save(Message message)

@@ -1,0 +1,33 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using Rabbit.IOnline.Models.ViewModels
+
+@model ListViewModel
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Message</th>
+            <th>Created at</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = Model.StartingIndex;
+        }
+        @foreach (var message in Model.Messages)
+        {
+            index += 1;
+                
+            <tr>
+                <td>
+                    <a href="@Url.Action("Detail", "Message", new { message.Id })">@index</a>
+                </td>
+                <td>@message.Body</td>
+                <td>@message.CreatedAt</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model.Messages, page => Url.Action("List", "Message", new { p = page }))

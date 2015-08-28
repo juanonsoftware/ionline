@@ -6,7 +6,12 @@ namespace Rabbit.IWasThere.Data
 {
     public interface IMessageRepository
     {
-        IList<Message> GetMessages(int pageIndex, int pageSize);
+        /// <summary>
+        /// Get a page of messages
+        /// </summary>
+        /// <param name="pageIndex">Zero based number</param>
+        /// <param name="pageSize"></param>
+        IEnumerable<Message> GetMessages(int pageIndex, int pageSize);
 
         Message GetById(Guid id);
 
