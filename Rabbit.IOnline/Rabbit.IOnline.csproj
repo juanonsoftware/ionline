@@ -168,6 +168,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\SiteCreditsViewModel.cs" />
     <Compile Include="Services\DataHelper.cs" />
     <Compile Include="Models\SystemDbInitializer.cs" />
     <Compile Include="Models\ViewModels\EditMessageViewModel.cs" />
@@ -226,6 +227,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Message\Save.cshtml" />
+    <Content Include="Views\Home\SiteCredits.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -234,6 +236,14 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rabbit.IWasThere.Common\Rabbit.IWasThere.Common.csproj">
+      <Project>{EB60EAA6-42EE-4EB0-99FD-7A911FBEFEAD}</Project>
+      <Name>Rabbit.IWasThere.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.IWasThere.Data.Dapper\Rabbit.IWasThere.Data.Dapper.csproj">
+      <Project>{3198D9AF-1742-4160-8D7A-FBC46B1DAC04}</Project>
+      <Name>Rabbit.IWasThere.Data.Dapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rabbit.IWasThere.Data.EF\Rabbit.IWasThere.Data.EF.csproj">
       <Project>{d104ff65-44c6-4fbc-80b8-cc2f7c917dab}</Project>
       <Name>Rabbit.IWasThere.Data.EF</Name>

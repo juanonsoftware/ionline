@@ -38,6 +38,10 @@
     <Compile Include="Migrations\201508310442428_AddCategory.Designer.cs">
       <DependentUpon>201508310442428_AddCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508310816430_AddCustomStoredProcedures.cs" />
+    <Compile Include="Migrations\201508310816430_AddCustomStoredProcedures.Designer.cs">
+      <DependentUpon>201508310816430_AddCustomStoredProcedures.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +74,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201508310442428_AddCategory.resx">
       <DependentUpon>201508310442428_AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508310816430_AddCustomStoredProcedures.resx">
+      <DependentUpon>201508310816430_AddCustomStoredProcedures.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

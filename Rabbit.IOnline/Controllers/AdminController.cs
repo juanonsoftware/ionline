@@ -1,7 +1,5 @@
 ﻿using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.EF;
-using Rabbit.IWasThere.Domain;
-using System;
 using System.Web.Mvc;
 
 namespace Rabbit.IOnline.Controllers
@@ -15,19 +13,13 @@ namespace Rabbit.IOnline.Controllers
             _messageRepository = new EfMessageRepository();
         }
 
-        public ActionResult GenerateMessages()
-        {
-            _messageRepository.Save(new Message()
-            {
-                Body = "Msg at " + DateTime.Now,
-                CreatedAt = DateTime.Now
-            });
-            return new ContentResult();
-        }
-
         public ActionResult Index()
         {
-            return View();
+            var totalMessages = _messageRepository.Count();
+            return new ContentResult()
+            {
+                Content = "Total messages: " + totalMessages
+            };
         }
     }
 }

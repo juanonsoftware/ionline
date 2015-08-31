@@ -15,17 +15,7 @@
 <div class="clearfix">
     <div class="pull-left width-30p">
         <h3>Site credits</h3>
-        <div>
-            <button class="btn btn-primary" type="button">
-                Messages <span class="badge">@Model.MessageCount</span>
-            </button>
-        </div>
-        <div>
-            <a href="@Url.Action("List", "Message")">
-                <span class="glyphicon glyphicon-menu-right"></span>
-                List all messages
-            </a>
-        </div>
+        @{ Html.RenderAction("SiteCredits", "Home"); }
     </div>
     <div class="pull-left width-70p">
         <h3>Write a message <small>of whatever you want to leave</small></h3>

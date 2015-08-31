@@ -1,12 +1,12 @@
 [
 	{
 		"Key": "EECBAF42-FC41-451B-88A8-8671539AEE87",
-		"Value": "Personal",
+		"Value": "Personal thought",
 		"Misc": "Personal thinking about this service :)"
 	},
 	{
 		"Key": "F959832F-0038-420B-92C7-96880ECD8F92",
 		"Value": "Showcase",
 		"Misc": "About a product or service that you want to share"
-	},
+	}
 ]

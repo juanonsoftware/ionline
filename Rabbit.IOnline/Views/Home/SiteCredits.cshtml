@@ -1,0 +1,14 @@
+﻿@using Rabbit.IOnline.Models.ViewModels
+@model SiteCreditsViewModel
+
+<div>
+    <button class="btn btn-primary" type="button">
+        Messages <span class="badge">@Model.MessageCount</span>
+    </button>
+</div>
+<div>
+    <a href="@Url.Action("List", "Message")">
+        <span class="glyphicon glyphicon-menu-right"></span>
+        List all messages
+    </a>
+</div>

@@ -12,7 +12,8 @@
     </div>
 
     <div class="form-group">
-        @Html.DropDownListFor(m => m.CategoryId, Model.Categories, new { @class = "form-control" })
+        <label for="CategoryId">Select a category</label>
+        @Html.DropDownListFor(m => m.CategoryId, Model.Categories, "---", new { @class = "form-control" })
     </div>
 
     @Html.Recaptcha(theme: RecaptchaTheme.Clean)
