@@ -3,11 +3,11 @@ using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.EF;
 using Rabbit.IWasThere.Domain;
+using Recaptcha.Web;
+using Recaptcha.Web.Mvc;
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using Recaptcha.Web;
-using Recaptcha.Web.Mvc;
 
 namespace Rabbit.IOnline.Controllers
 {

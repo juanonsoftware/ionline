@@ -1,11 +1,24 @@
 ﻿@{
     ViewBag.Title = "Save";
 }
+
 @using Rabbit.IOnline.Models.ViewModels
 
 @model EditMessageViewModel
 
-<h2>Save</h2>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("List", "Message")">List messages</a></li>
+    <li class="active">
+        @if (Model.IsCreatingMessage)
+        {
+            @:Enter your message
+        }
+        else
+        {
+            @:Modify your message
+        }
+    </li>
+</ol>
 
 @{
     Html.RenderPartial("_MessageEditForm", Model);

@@ -5,6 +5,8 @@
 @model EditMessageViewModel
 
 <form action="@Url.Action("Save", "Message")" enctype="multipart/form-data" method="POST">
+    @Html.ValidationSummary()
+
     <div class="form-group">
         @Html.TextAreaFor(m => m.Body, new { @class = "form-control" })
     </div>
