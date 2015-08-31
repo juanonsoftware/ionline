@@ -7,6 +7,7 @@
     <thead>
         <tr>
             <th>#</th>
+            <td>Category</td>
             <th>Message</th>
             <th>Created at</th>
         </tr>
@@ -22,6 +23,12 @@
             <tr>
                 <td>
                     <a href="@Url.Action("Detail", "Message", new { message.Id })">@index</a>
+                </td>
+                <td>
+                    @if (message.CategorySelected != null)
+                    {
+                        @Html.Raw(message.CategorySelected.Value)
+                    }
                 </td>
                 <td>@message.Body</td>
                 <td>@message.CreatedAt</td>

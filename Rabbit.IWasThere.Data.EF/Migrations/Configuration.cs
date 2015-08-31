@@ -3,11 +3,9 @@ namespace Rabbit.IWasThere.Data.EF.Migrations
     using Rabbit.IWasThere.Domain;
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Rabbit.IWasThere.Data.EF.AppDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<AppDbContext>
     {
         public Configuration()
         {

@@ -1,5 +1,8 @@
 ﻿using Rabbit.IOnline.App_Start;
-using Rabbit.IOnline.Models;
+using Rabbit.IWasThere.Data.EF;
+using Rabbit.IWasThere.Data.EF.Migrations;
+using Rabbit.SerializationMaster;
+using Rabbit.SerializationMaster.ServiceStack;
 using System.Data.Entity;
 using System.Web;
 using System.Web.Http;
@@ -21,11 +24,18 @@ namespace Rabbit.IOnline
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             InitializeDatabase();
+            ConfigureSerialization();
         }
 
         private void InitializeDatabase()
         {
-            Database.SetInitializer(new SystemDbInitializer());
+            //Database.SetInitializer(new SystemDbInitializer());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
+        }
+
+        private void ConfigureSerialization()
+        {
+            SerializationContext.Current.Initialize(new JsonSerializationStrategy());
         }
     }
 }

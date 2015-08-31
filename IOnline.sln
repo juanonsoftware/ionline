@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.IOnline", "Rabbit.IOnline\Rabbit.IOnline.csproj", "{C75D76DF-BA9D-4F3F-9684-E5B53CD74C2A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.IWasThere.Domain", "Rabbit.IWasThere.Domain\Rabbit.IWasThere.Domain.csproj", "{A4A5EDAF-8CB9-42CC-A3E8-2311601AF1A8}"
@@ -16,6 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9836C2
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{17B5EB46-CCA0-4384-8C62-9B644BFEEC77}"
+	ProjectSection(SolutionItems) = preProject
+		CategoryData.txt = CategoryData.txt
 	EndProjectSection
 EndProject
 Global

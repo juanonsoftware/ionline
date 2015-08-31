@@ -11,6 +11,7 @@ namespace Rabbit.IWasThere.Domain
 
         public Guid Id { get; set; }
         public string Body { get; set; }
+        public Guid CategoryId { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }
