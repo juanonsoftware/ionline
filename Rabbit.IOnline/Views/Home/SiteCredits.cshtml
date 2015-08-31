@@ -9,7 +9,7 @@
 
 @foreach (var category in Model.Categories)
 {
-    <div>
+    <div class="margin-t-20">
         <a href="@Url.Action("List", "Message", new { catid = category.Category.Key })" class="btn btn-default">
             @category.Category.Value
             <span class="badge">@category.MessageCount</span>
@@ -17,7 +17,7 @@
     </div>   
 }
 
-<div>
+<div class="margin-t-20">
     <a href="@Url.Action("List", "Message")">
         <span class="glyphicon glyphicon-menu-right"></span>
         List all messages

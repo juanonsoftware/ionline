@@ -25,7 +25,7 @@ namespace Rabbit.IOnline.App_Start
                     "~/Content/site.css"));
 
             bundles.Add(
-                new StyleBundle("~/Content/cssbox", "//cdn.rawgit.com/netvietdev/cssbox/dict/v1.0/cssbox.min.css")
+                new StyleBundle("~/Content/cssbox", "//cdn.rawgit.com/netvietdev/cssbox/dict/v1.1.1/cssbox.min.css")
                     .Include("~/Content/cssbox.css"));
         }
     }
