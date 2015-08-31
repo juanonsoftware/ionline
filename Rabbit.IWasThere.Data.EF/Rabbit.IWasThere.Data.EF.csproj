@@ -42,6 +42,10 @@
     <Compile Include="Migrations\201508310816430_AddCustomStoredProcedures.Designer.cs">
       <DependentUpon>201508310816430_AddCustomStoredProcedures.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508311004119_UpdateCountMessagesSP.cs" />
+    <Compile Include="Migrations\201508311004119_UpdateCountMessagesSP.Designer.cs">
+      <DependentUpon>201508311004119_UpdateCountMessagesSP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508310816430_AddCustomStoredProcedures.resx">
       <DependentUpon>201508310816430_AddCustomStoredProcedures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508311004119_UpdateCountMessagesSP.resx">
+      <DependentUpon>201508311004119_UpdateCountMessagesSP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

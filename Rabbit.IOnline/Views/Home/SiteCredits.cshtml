@@ -3,9 +3,20 @@
 
 <div>
     <button class="btn btn-primary" type="button">
-        Messages <span class="badge">@Model.MessageCount</span>
+        Total messages <span class="badge">@Model.MessageCount</span>
     </button>
 </div>
+
+@foreach (var category in Model.Categories)
+{
+    <div>
+        <a href="@Url.Action("List", "Message", new { catid = category.Category.Key })" class="btn btn-default">
+            @category.Category.Value
+            <span class="badge">@category.MessageCount</span>
+        </a>
+    </div>   
+}
+
 <div>
     <a href="@Url.Action("List", "Message")">
         <span class="glyphicon glyphicon-menu-right"></span>

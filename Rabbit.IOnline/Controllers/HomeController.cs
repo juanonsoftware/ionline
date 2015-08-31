@@ -3,6 +3,8 @@ using Rabbit.IOnline.Services;
 using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.Dapper;
+using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
@@ -49,9 +51,26 @@ namespace Rabbit.IOnline.Controllers
             var vm = new SiteCreditsViewModel()
             {
                 MessageCount = stats.First(x => x.Key == Constants.GlobalCategory).Value,
-                CategoryMessageCount =
-                    stats.Where(x => x.Key != Constants.GlobalCategory).ToDictionary(x => x.Key, x => x.Value)
+                Categories = new List<CategoryStatViewModel>()
             };
+
+            var categories = _dataService.GetCategories(ConfigurationManager.AppSettings["CategoryDataFilePath"]);
+
+            foreach (var category in categories)
+            {
+                var categoryStatViewModel = new CategoryStatViewModel()
+                {
+                    Category = category,
+                };
+
+                var categoryStat = stats.SingleOrDefault(x => string.Equals(x.Key.ToString(), category.Key, StringComparison.InvariantCultureIgnoreCase));
+                if (!Equals(categoryStat, default(KeyValuePair<Guid, int>)))
+                {
+                    categoryStatViewModel.MessageCount = categoryStat.Value;
+                }
+
+                vm.Categories.Add(categoryStatViewModel);
+            }
 
             return PartialView(vm);
         }

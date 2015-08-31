@@ -21,6 +21,12 @@ namespace Rabbit.IWasThere.Data.EF
             return _context.Messages.OrderByDescending(x => x.CreatedAt).Skip(() => offset).Take(() => pageSize);
         }
 
+        public IEnumerable<Message> GetMessages(Guid categoryId, int pageIndex, int pageSize)
+        {
+            var offset = pageIndex * pageSize;
+            return _context.Messages.Where(x => x.CategoryId == categoryId).OrderByDescending(x => x.CreatedAt).Skip(() => offset).Take(() => pageSize);
+        }
+
         public void Save(Message message)
         {
             if (_context.Messages.Any(x => x.Id == message.Id))

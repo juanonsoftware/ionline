@@ -26,7 +26,17 @@ namespace Rabbit.IWasThere.Data.Dapper
             using (_sqlConnection)
             {
                 return
-                    _sqlConnection.Query("CountMessages", commandType: CommandType.StoredProcedure)
+                    _sqlConnection.Query("CountMessages", new { categoryId = Guid.Empty }, commandType: CommandType.StoredProcedure)
+                        .ToDictionary(row => (Guid)row.CategoryId, row => (int)row.MessageCount);
+            }
+        }
+
+        public IDictionary<Guid, int> CountMessages(Guid categoryId)
+        {
+            using (_sqlConnection)
+            {
+                return
+                    _sqlConnection.Query("CountMessages", new { categoryId = categoryId }, commandType: CommandType.StoredProcedure)
                         .ToDictionary(row => (Guid)row.CategoryId, row => (int)row.MessageCount);
             }
         }

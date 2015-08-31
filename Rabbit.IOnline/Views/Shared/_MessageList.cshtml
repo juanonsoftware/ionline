@@ -38,7 +38,7 @@
 </table>
 
 @Html.PagedListPager(Model.Messages,
-    page => Url.Action("List", "Message", new { p = page }),
+    page => Url.Action("List", "Message", new { p = page, catid = Model.CategoryId }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
     {
         HttpMethod = "GET",

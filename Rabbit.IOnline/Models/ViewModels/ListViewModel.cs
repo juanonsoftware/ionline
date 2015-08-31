@@ -1,4 +1,5 @@
 ﻿using PagedList;
+using System;
 
 namespace Rabbit.IOnline.Models.ViewModels
 {
@@ -20,6 +21,8 @@ namespace Rabbit.IOnline.Models.ViewModels
                 return (metaData.PageNumber - 1) * metaData.PageSize;
             }
         }
+
+        public Guid? CategoryId { get; set; }
 
         public IPagedList<MessageViewModel> Messages { get; set; }
     }

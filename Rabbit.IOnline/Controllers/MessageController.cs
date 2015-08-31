@@ -2,11 +2,13 @@
 using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IOnline.Services;
 using Rabbit.IWasThere.Data;
+using Rabbit.IWasThere.Data.Dapper;
 using Rabbit.IWasThere.Data.EF;
 using Rabbit.IWasThere.Domain;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
@@ -17,11 +19,13 @@ namespace Rabbit.IOnline.Controllers
     {
         private readonly IMessageRepository _messageRepository;
         private readonly IDataService _dataService;
+        private readonly IMessageCounter _messageCounter;
 
         public MessageController()
         {
             _messageRepository = new EfMessageRepository();
             _dataService = new DataService();
+            _messageCounter = new DapperMessageCounter(ConfigurationManager.ConnectionStrings["IOnlineDb"].ConnectionString);
         }
 
         [HttpPost]
@@ -78,27 +82,48 @@ namespace Rabbit.IOnline.Controllers
             return View(vm);
         }
 
-        public ActionResult List(int? p, int? s)
+        public ActionResult List(int? p, int? s, Guid? catid)
         {
             var pageIndex = p.HasValue ? p.Value : 1;
             var pageSize = s.HasValue ? s.Value : 5;
 
-            var messageCount = _messageRepository.Count();
             var categories =
                 _dataService.GetCategories(ConfigurationManager.AppSettings["CategoryDataFilePath"]).ToList();
 
-            var messages = _messageRepository.GetMessages(pageIndex - 1, pageSize).Select(x => new MessageViewModel()
+            var messageCount = 0;
+            if (catid.HasValue)
+            {
+                var countInfo = _messageCounter.CountMessages(catid.Value);
+                var categoryCount = countInfo.SingleOrDefault(x => x.Key == catid.Value);
+                if (!Equals(categoryCount, default(KeyValuePair<Guid, int>)))
+                {
+                    messageCount = categoryCount.Value;
+                }
+            }
+            else
+            {
+                messageCount = _messageRepository.Count();
+            }
+
+            var listOfMessages = catid.HasValue
+                 ? _messageRepository.GetMessages(catid.Value, pageIndex - 1, pageSize)
+                 : _messageRepository.GetMessages(pageIndex - 1, pageSize);
+
+            var messages = listOfMessages.Select(x => new MessageViewModel()
             {
                 Id = x.Id,
                 Body = x.Body,
                 CreatedAt = x.CreatedAt,
-                CategorySelected = categories.SingleOrDefault(c => string.Equals(c.Key, x.CategoryId.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                CategorySelected =
+                    categories.SingleOrDefault(
+                        c => string.Equals(c.Key, x.CategoryId.ToString(), StringComparison.InvariantCultureIgnoreCase))
             });
 
             var pagedList = new StaticPagedList<MessageViewModel>(messages, pageIndex, pageSize, messageCount);
             var vm = new ListViewModel()
             {
-                Messages = pagedList
+                Messages = pagedList,
+                CategoryId = catid
             };
 
             if (Request.IsAjaxRequest())
