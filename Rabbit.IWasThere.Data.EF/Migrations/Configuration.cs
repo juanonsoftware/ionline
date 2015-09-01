@@ -1,6 +1,7 @@
+using Rabbit.IWasThere.Domain;
+
 namespace Rabbit.IWasThere.Data.EF.Migrations
 {
-    using Rabbit.IWasThere.Domain;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
@@ -10,7 +11,7 @@ namespace Rabbit.IWasThere.Data.EF.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "Rabbit.IWasThere.Data.EF.AppDbContext";
+            ContextKey = typeof(AppDbContext).FullName;
         }
 
         protected override void Seed(AppDbContext context)
@@ -27,7 +28,7 @@ namespace Rabbit.IWasThere.Data.EF.Migrations
             {
                 new Message()
                 {
-                    Id=Guid.Parse("3C7EB980-545E-4C62-B54A-B1A732FC669C"),
+                    Id = Guid.Parse("3C7EB980-545E-4C62-B54A-B1A732FC669C"),
                     Body = "System has been initialized",
                     CreatedAt = DateTime.Now,
                 },

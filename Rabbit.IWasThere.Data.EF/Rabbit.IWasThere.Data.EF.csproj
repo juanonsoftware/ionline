@@ -34,17 +34,17 @@
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
     <Compile Include="EfMessageRepository.cs" />
-    <Compile Include="Migrations\201508310442428_AddCategory.cs" />
-    <Compile Include="Migrations\201508310442428_AddCategory.Designer.cs">
-      <DependentUpon>201508310442428_AddCategory.cs</DependentUpon>
+    <Compile Include="Migrations\201509011026430_AddCustomStoredProcedures.cs" />
+    <Compile Include="Migrations\201509011026430_AddCustomStoredProcedures.Designer.cs">
+      <DependentUpon>201509011026430_AddCustomStoredProcedures.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201508310816430_AddCustomStoredProcedures.cs" />
-    <Compile Include="Migrations\201508310816430_AddCustomStoredProcedures.Designer.cs">
-      <DependentUpon>201508310816430_AddCustomStoredProcedures.cs</DependentUpon>
+    <Compile Include="Migrations\201509011027119_UpdateCountMessagesSP.cs" />
+    <Compile Include="Migrations\201509011027119_UpdateCountMessagesSP.Designer.cs">
+      <DependentUpon>201509011027119_UpdateCountMessagesSP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201508311004119_UpdateCountMessagesSP.cs" />
-    <Compile Include="Migrations\201508311004119_UpdateCountMessagesSP.Designer.cs">
-      <DependentUpon>201508311004119_UpdateCountMessagesSP.cs</DependentUpon>
+    <Compile Include="Migrations\201509011025442_Init.cs" />
+    <Compile Include="Migrations\201509011025442_Init.Designer.cs">
+      <DependentUpon>201509011025442_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,14 +76,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508310442428_AddCategory.resx">
-      <DependentUpon>201508310442428_AddCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509011026430_AddCustomStoredProcedures.resx">
+      <DependentUpon>201509011026430_AddCustomStoredProcedures.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508310816430_AddCustomStoredProcedures.resx">
-      <DependentUpon>201508310816430_AddCustomStoredProcedures.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509011027119_UpdateCountMessagesSP.resx">
+      <DependentUpon>201509011027119_UpdateCountMessagesSP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508311004119_UpdateCountMessagesSP.resx">
-      <DependentUpon>201508311004119_UpdateCountMessagesSP.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509011025442_Init.resx">
+      <DependentUpon>201509011025442_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
