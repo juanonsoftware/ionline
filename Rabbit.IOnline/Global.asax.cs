@@ -1,14 +1,17 @@
 ﻿using Rabbit.IOnline.App_Start;
+using Rabbit.IOnline.Models;
 using Rabbit.IWasThere.Data.EF;
-using Rabbit.IWasThere.Data.EF.Migrations;
 using Rabbit.SerializationMaster;
 using Rabbit.SerializationMaster.ServiceStack;
+using System;
+using System.Configuration;
 using System.Data.Entity;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Configuration = Rabbit.IWasThere.Data.EF.Migrations.Configuration;
 
 namespace Rabbit.IOnline
 {
@@ -29,8 +32,15 @@ namespace Rabbit.IOnline
 
         private void InitializeDatabase()
         {
-            //Database.SetInitializer(new SystemDbInitializer());
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
+            if (string.Equals(ConfigurationManager.AppSettings["UseMigration"], "true",
+                StringComparison.InvariantCultureIgnoreCase))
+            {
+                Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
+            }
+            else
+            {
+                Database.SetInitializer(new SystemDbInitializer());
+            }
         }
 
         private void ConfigureSerialization()
