@@ -1,4 +1,5 @@
-﻿using Rabbit.IOnline.App_Start;
+﻿using System.Data.Entity.Migrations;
+using Rabbit.IOnline.App_Start;
 using Rabbit.IWasThere.Data.EF;
 using Rabbit.SerializationMaster;
 using Rabbit.SerializationMaster.ServiceStack;
@@ -29,7 +30,9 @@ namespace Rabbit.IOnline
 
         private void InitializeDatabase()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
+            new DbMigrator(new Configuration()).Update();
+
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
         }
 
         private void ConfigureSerialization()
