@@ -44,6 +44,14 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rabbit.Cache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rabbit.Cache.1.0.1\lib\Rabbit.Cache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rabbit.Cache.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rabbit.Cache.Redis.1.0.2\lib\Rabbit.Cache.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Rabbit.Foundation, Version=1.0.0.18056, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rabbit.Foundation.1.3.6\lib\Rabbit.Foundation.dll</HintPath>
       <Private>True</Private>
