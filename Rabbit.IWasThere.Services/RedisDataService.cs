@@ -1,5 +1,5 @@
 ﻿using Rabbit.Foundation.Data;
-using Rabbit.SerializationMaster;
+using Rabbit.Integrations.Redis;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -21,17 +21,18 @@ namespace Rabbit.IWasThere.Services
         public IEnumerable<DataItem> GetCategories(string dataFileUrl)
         {
             var cache = _connection.GetDatabase();
-            var dataOnCache = cache.StringGet(dataFileUrl);
+            var dataOnCache = cache.Get<List<DataItem>>(dataFileUrl);
 
-            if (dataOnCache.IsNull)
+            if (dataOnCache == null)
             {
-                var values = _directService.GetCategories(dataFileUrl).ToList();
-                cache.StringSet(dataFileUrl, values.Serialize(), TimeSpan.FromHours(1));
-                return values;
+                var categories = _directService.GetCategories(dataFileUrl).ToList();
+                cache.Set(dataFileUrl, categories, TimeSpan.FromHours(1));
+
+                return categories;
             }
             else
             {
-                return ((string)dataOnCache).Deserialize<List<DataItem>>();
+                return dataOnCache;
             }
         }
     }
