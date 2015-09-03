@@ -12,8 +12,8 @@ namespace Rabbit.IWasThere.Services
 
             if (bool.Parse(useRedisCfg))
             {
-                var endPoint = ConfigurationManager.AppSettings["EndPoint"];
-                var password = ConfigurationManager.AppSettings["Password"];
+                var endPoint = ConfigurationManager.AppSettings["RedisEndPoint"];
+                var password = ConfigurationManager.AppSettings["RedisPassword"];
                 return Create(true, new Dictionary<string, string>()
                 {
                     {"EndPoint", endPoint},
