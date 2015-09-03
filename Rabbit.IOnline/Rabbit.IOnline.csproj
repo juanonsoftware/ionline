@@ -170,15 +170,12 @@
     </Compile>
     <Compile Include="Models\ViewModels\CategoryStatViewModel.cs" />
     <Compile Include="Models\ViewModels\SiteCreditsViewModel.cs" />
-    <Compile Include="Services\DataHelper.cs" />
     <Compile Include="Models\SystemDbInitializer.cs" />
     <Compile Include="Models\ViewModels\EditMessageViewModel.cs" />
     <Compile Include="Models\ViewModels\IndexViewModel.cs" />
     <Compile Include="Models\ViewModels\ListViewModel.cs" />
     <Compile Include="Models\ViewModels\MessageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DataService.cs" />
-    <Compile Include="Services\IDataService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -256,6 +253,10 @@
     <ProjectReference Include="..\Rabbit.IWasThere.Domain\Rabbit.IWasThere.Domain.csproj">
       <Project>{a4a5edaf-8cb9-42cc-a3e8-2311601af1a8}</Project>
       <Name>Rabbit.IWasThere.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.IWasThere.Services\Rabbit.IWasThere.Services.csproj">
+      <Project>{F8EA6962-80D1-4B6B-A189-746EC8A452A5}</Project>
+      <Name>Rabbit.IWasThere.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

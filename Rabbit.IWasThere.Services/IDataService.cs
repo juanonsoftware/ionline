@@ -1,7 +1,7 @@
-﻿using Rabbit.Foundation.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Rabbit.Foundation.Data;
 
-namespace Rabbit.IOnline.Services
+namespace Rabbit.IWasThere.Services
 {
     public interface IDataService
     {

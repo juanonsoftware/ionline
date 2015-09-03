@@ -1,9 +1,9 @@
-﻿using Rabbit.Foundation.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Rabbit.Foundation.Data;
 
-namespace Rabbit.IOnline.Services
+namespace Rabbit.IWasThere.Services
 {
-    public class DataService : IDataService
+    public class DirectDataService : IDataService
     {
         public IEnumerable<DataItem> GetCategories(string dataFileUrl)
         {

@@ -1,10 +1,10 @@
 ﻿using PagedList;
 using Rabbit.IOnline.Models.ViewModels;
-using Rabbit.IOnline.Services;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.Dapper;
 using Rabbit.IWasThere.Data.EF;
 using Rabbit.IWasThere.Domain;
+using Rabbit.IWasThere.Services;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
 using System;
@@ -24,7 +24,7 @@ namespace Rabbit.IOnline.Controllers
         public MessageController()
         {
             _messageRepository = new EfMessageRepository();
-            _dataService = new DataService();
+            _dataService = DataServiceFactory.Create();
             _messageCounter = new DapperMessageCounter(ConfigurationManager.ConnectionStrings["IOnlineDb"].ConnectionString);
         }
 

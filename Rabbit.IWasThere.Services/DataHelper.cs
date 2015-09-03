@@ -1,11 +1,11 @@
-﻿using Rabbit.Foundation.Data;
-using Rabbit.Net.WebCrawling;
-using Rabbit.SerializationMaster;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Rabbit.Foundation.Data;
+using Rabbit.Net.WebCrawling;
+using Rabbit.SerializationMaster;
 
-namespace Rabbit.IOnline.Services
+namespace Rabbit.IWasThere.Services
 {
     public static class DataHelper
     {

@@ -1,8 +1,8 @@
 ﻿using Rabbit.IOnline.Models.ViewModels;
-using Rabbit.IOnline.Services;
 using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.Dapper;
+using Rabbit.IWasThere.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,7 +18,7 @@ namespace Rabbit.IOnline.Controllers
 
         public HomeController()
         {
-            _dataService = new DataService();
+            _dataService = DataServiceFactory.Create();
             _messageCounter = new DapperMessageCounter(ConfigurationManager.ConnectionStrings["IOnlineDb"].ConnectionString);
         }
 
