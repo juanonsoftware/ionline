@@ -21,9 +21,9 @@ namespace Rabbit.IWasThere.Services
         public IEnumerable<DataItem> GetCategories(string dataFileUrl)
         {
             var cache = _connection.GetDatabase();
-            var dataOnCache = cache.Get<List<DataItem>>(dataFileUrl);
+            var dataInCache = cache.Get<List<DataItem>>(dataFileUrl);
 
-            if (dataOnCache == null)
+            if (dataInCache == null)
             {
                 var categories = _directService.GetCategories(dataFileUrl).ToList();
                 cache.Set(dataFileUrl, categories, TimeSpan.FromHours(1));
@@ -32,7 +32,7 @@ namespace Rabbit.IWasThere.Services
             }
             else
             {
-                return dataOnCache;
+                return dataInCache;
             }
         }
     }
