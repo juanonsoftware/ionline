@@ -6,12 +6,16 @@ namespace Rabbit.IWasThere.Services
     public class ConnectionMultiplexerManager
     {
         private static ConnectionMultiplexer _connection;
+        private static readonly object LockObj = new object();
 
         public static ConnectionMultiplexer GetCurrent(string endPoint, string password)
         {
-            if (_connection == null)
+            lock (LockObj)
             {
-                InitializeConnection(endPoint, password);
+                if (_connection == null)
+                {
+                    InitializeConnection(endPoint, password);
+                }
             }
 
             return _connection;
