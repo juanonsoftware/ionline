@@ -22,7 +22,10 @@ namespace Rabbit.IOnline.App_Start
                     "//cdnjs.cloudflare.com/ajax/libs/showdown/1.2.3/showdown.min.js")
                     .Include("~/Scripts/showdown.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/showndown-preview").Include("~/Scripts/jquery.showndown-preview.js"));
+            bundles.Add(
+                new ScriptBundle("~/bundles/showndown-preview",
+                    "//cdn.rawgit.com/netvietdev/showdown-preview/dict/v1.0/jquery.showdown-preview.js").Include(
+                        "~/Scripts/jquery.showdown-preview.js"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap",
                 "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css")
