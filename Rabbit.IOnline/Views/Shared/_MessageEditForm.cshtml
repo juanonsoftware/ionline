@@ -16,7 +16,19 @@
         @Html.DropDownListFor(m => m.CategoryId, Model.Categories, "---", new { @class = "form-control" })
     </div>
 
-    @Html.Recaptcha(theme: RecaptchaTheme.Clean)
+    <div class="form-group">
+        @Html.Recaptcha(theme: RecaptchaTheme.Clean)
+    </div>
 
-    <button type="submit" class="btn btn-default">Submit</button>
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+
+    <div id="preview" class="well well-sm"></div>
 </form>
+<script type="text/javascript">
+    $('div#preview').previewShowdown({
+        source: 'div.form-group textarea',
+        defaultMessage: '*Enter your message and see its preview there*'
+    });
+</script>

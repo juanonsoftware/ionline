@@ -1,0 +1,18 @@
+This application has been built using below packages
+
+## UI layer
+- ASP.NET MVC
+- Web Optimization to build Scripts and Stylesheet bundles
+- PagedList.Mvc for pagination
+- JQuery / JQuery Unobtrusive Ajax
+
+## DAL layer
+- EntityFramework with Code First approach
+- Dapper a high performance library to query the system database
+
+## Service layer
+- StackExchange.Redis a Redis client for caching
+- Rabbit.SerializationMaster a serialization framework (via Rabbit.SerializationMaster.ServiceStack)
+- Rabbit.Cache.Redis a caching library which utilizes Redis
+- Rabbit.Net to get remote file content
+- RecaptchaNet a validation package using Google reCaptcha service
