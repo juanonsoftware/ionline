@@ -41,7 +41,7 @@ namespace Rabbit.IWasThere.Services
 
             if (!string.IsNullOrWhiteSpace(dataInCache))
             {
-                return dataInCache.Replace("\n", Environment.NewLine);
+                return dataInCache;
             }
 
             var credits = _directService.GetCredits(creditsFileUrl);
