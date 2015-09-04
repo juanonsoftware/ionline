@@ -1,8 +1,18 @@
 ﻿@{
     ViewBag.Title = "About";
 }
+@model string
 
 <ol class="breadcrumb">
     <li><a href="@Url.Action("List", "Message")">List messages</a></li>
     <li class="active">About</li>
 </ol>
+
+<div id="preview"></div>
+<input type="hidden" value="@Model" id="msg"/>
+
+<script type="text/javascript">
+    $('div#preview').previewShowdown({
+        source: 'input#msg',
+    });
+</script>

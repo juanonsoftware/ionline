@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using Rabbit.Foundation.Data;
+﻿using Rabbit.Foundation.Data;
+using Rabbit.Net.WebCrawling;
+using System.Collections.Generic;
 
 namespace Rabbit.IWasThere.Services
 {
@@ -8,6 +9,13 @@ namespace Rabbit.IWasThere.Services
         public IEnumerable<DataItem> GetCategories(string dataFileUrl)
         {
             return DataHelper.ParseJsonFromUrl(dataFileUrl);
+        }
+
+        public string GetCredits(string creditsFileUrl)
+        {
+            return
+               new WebRequestWorker().DownloadResponse(new CrawlingOption(creditsFileUrl))
+                   .ReadAsText();
         }
     }
 }

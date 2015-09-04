@@ -40,7 +40,8 @@ namespace Rabbit.IOnline.Controllers
 
         public ActionResult About()
         {
-            return View();
+            object credits = _dataService.GetCredits(ConfigurationManager.AppSettings["CreditsFilePath"]);
+            return View(credits);
         }
 
         [ChildActionOnly]

@@ -34,5 +34,19 @@ namespace Rabbit.IWasThere.Services
             _redisCache.Set(dataFileUrl, categories, TimeSpan.FromHours(1));
             return categories;
         }
+
+        public string GetCredits(string creditsFileUrl)
+        {
+            var dataInCache = _redisCache.Get<string>(creditsFileUrl);
+
+            if (!string.IsNullOrWhiteSpace(dataInCache))
+            {
+                return dataInCache;
+            }
+
+            var credits = _directService.GetCredits(creditsFileUrl);
+            _redisCache.Set(creditsFileUrl, credits);
+            return credits;
+        }
     }
 }

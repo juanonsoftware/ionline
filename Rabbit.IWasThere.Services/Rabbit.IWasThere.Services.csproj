@@ -57,7 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Integrations.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.Integrations.Redis.1.1.0\lib\Rabbit.Integrations.Redis.dll</HintPath>
+      <HintPath>..\packages\Rabbit.Integrations.Redis.1.1.1\lib\Rabbit.Integrations.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

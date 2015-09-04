@@ -7,20 +7,27 @@
 
     $.fn.previewShowdown = function (options) {
 
-        var $textarea = $(options.source);
         var $preview = $(this);
 
-        $textarea.keyup(function () {
-            $preview.html(convert($textarea.val()));
-        }).trigger('keyup');
+        if (options.source) {
+            var $textarea = $(options.source);
+
+            $textarea.keyup(function () {
+                var text = $textarea.val();
+
+                if (text.length < 1 && options.defaultMessage) {
+                    text = options.defaultMessage;
+                }
+
+                $preview.html(convert(text));
+            }).trigger('keyup');
+        } else {
+            $preview.html(convert(options.defaultMessage));
+        }
 
         function convert(text) {
             var converter = new showdown.Converter(),
                 html = converter.makeHtml(text);
-
-            if (html.length < 1 && options.defaultMessage) {
-                html = converter.makeHtml(options.defaultMessage);
-            }
 
             return html;
         }
