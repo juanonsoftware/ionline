@@ -52,8 +52,8 @@
       <HintPath>..\packages\Rabbit.Cache.Redis.1.0.3\lib\Rabbit.Cache.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Rabbit.Foundation, Version=1.0.0.18056, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.Foundation.1.3.6\lib\Rabbit.Foundation.dll</HintPath>
+    <Reference Include="Rabbit.Foundation, Version=1.0.0.31909, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rabbit.Foundation.1.4.0\lib\Rabbit.Foundation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Integrations.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
