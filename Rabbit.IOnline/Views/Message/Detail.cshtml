@@ -6,10 +6,17 @@
 @model Rabbit.IOnline.Models.ViewModels.MessageViewModel
 
 <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
     <li><a href="@Url.Action("List", "Message")">List messages</a></li>
     <li class="active">Message created at @Model.CreatedAt.ToString(CultureInfo.InvariantCulture)</li>
 </ol>
 
-<div class="well">
-    @Model.Body
+<div class="well well-sm" id="preview">
 </div>
+<input type="hidden" value="@Model.Body" id="msg"/>
+
+<script type="text/javascript">
+    $('div#preview').previewShowdown({
+        source: 'input#msg',
+    });
+</script>
