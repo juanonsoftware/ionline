@@ -24,7 +24,7 @@ namespace Rabbit.IOnline.App_Start
 
             bundles.Add(
                 new ScriptBundle("~/bundles/showndown-preview",
-                    "//cdn.rawgit.com/netvietdev/showdown-preview/dict/v1.0/jquery.showdown-preview.js").Include(
+                    "//cdn.rawgit.com/netvietdev/showdown-preview/dict/v1.1/jquery.showdown-preview.js").Include(
                         "~/Scripts/jquery.showdown-preview.js"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap",

@@ -1,18 +1,28 @@
 This application has been built using below packages
 
-## UI layer
+### UI layer
 - ASP.NET MVC
 - Web Optimization to build Scripts and Stylesheet bundles
 - PagedList.Mvc for pagination
 - JQuery / JQuery Unobtrusive Ajax
+- [JQuery Showdown Preview][8]
 
-## DAL layer
+### DAL layer
 - EntityFramework with Code First approach
 - Dapper a high performance library to query the system database
 
-## Service layer
-- StackExchange.Redis a Redis client for caching
-- Rabbit.SerializationMaster a serialization framework (via Rabbit.SerializationMaster.ServiceStack)
-- Rabbit.Cache.Redis a caching library which utilizes Redis
-- Rabbit.Net to get remote file content
-- RecaptchaNet a validation package using Google reCaptcha service
+### Service layer
+- [StackExchange.Redis][1] - a Redis client for caching
+- [Rabbit.SerializationMaster][2] - a serialization framework. (Use concrete implementation [Rabbit.SerializationMaster.ServiceStack][3])
+- [Rabbit.Cache.Redis][4] - a caching library which utilizes Redis. This one is based on [Rabbit.Cache][5]
+- [Rabbit.Net][6] - to get remote file content
+- [RecaptchaNet][7] - a validation package using Google reCaptcha service
+
+[1]: https://github.com/StackExchange/StackExchange.Redis
+[2]: https://www.nuget.org/packages/Rabbit.SerializationMaster/
+[3]: https://www.nuget.org/packages/Rabbit.SerializationMaster.ServiceStack/
+[4]: https://www.nuget.org/packages/Rabbit.Cache.Redis/
+[5]: https://www.nuget.org/packages/Rabbit.Cache/
+[6]: https://www.nuget.org/packages/Rabbit.Net/
+[7]: https://www.nuget.org/packages/RecaptchaNet/1.3.0
+[8]: https://github.com/netvietdev/showdown-preview/
