@@ -41,11 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Rabbit.Cache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.Cache.1.0.2\lib\Rabbit.Cache.dll</HintPath>
+      <HintPath>..\packages\Rabbit.Cache.1.1.0\lib\Rabbit.Cache.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Cache.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.Cache.Redis.1.0.3\lib\Rabbit.Cache.Redis.dll</HintPath>
+      <HintPath>..\packages\Rabbit.Cache.Redis.1.1.0\lib\Rabbit.Cache.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Foundation, Version=1.0.0.31909, Culture=neutral, processorArchitecture=MSIL">

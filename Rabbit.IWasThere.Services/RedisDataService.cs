@@ -1,7 +1,6 @@
 ﻿using Rabbit.Cache;
 using Rabbit.Cache.Redis;
 using Rabbit.Foundation.Data;
-using Rabbit.Integrations.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +12,10 @@ namespace Rabbit.IWasThere.Services
         private readonly IDataService _directService;
         private readonly ICache _redisCache;
 
-        public RedisDataService(string endPoint, string password)
+        public RedisDataService(IDictionary<string, string> options)
         {
-            var connection = ConnectionMultiplexerManager.GetCurrent(endPoint, password);
-
             _directService = new DirectDataService();
-            _redisCache = new RedisCache(connection.GetDatabase());
+            _redisCache = new RedisLabsRedisCacheFactory().Create(options);
         }
 
         public IEnumerable<DataItem> GetCategories(string dataFileUrl)

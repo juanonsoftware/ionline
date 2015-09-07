@@ -16,8 +16,8 @@ namespace Rabbit.IWasThere.Services
                 var password = ConfigurationManager.AppSettings["RedisPassword"];
                 return Create(true, new Dictionary<string, string>()
                 {
-                    {"EndPoint", endPoint},
-                    {"Password", password}
+                    {"endPoint", endPoint},
+                    {"password", password}
                 });
             }
 
@@ -33,10 +33,7 @@ namespace Rabbit.IWasThere.Services
                     throw new ArgumentNullException("options");
                 }
 
-                var endPoint = options["EndPoint"];
-                var password = options["Password"];
-
-                return new RedisDataService(endPoint, password);
+                return new RedisDataService(options);
             }
             return new DirectDataService();
         }
