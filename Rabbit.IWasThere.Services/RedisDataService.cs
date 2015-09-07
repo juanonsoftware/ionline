@@ -23,30 +23,22 @@ namespace Rabbit.IWasThere.Services
 
         public IEnumerable<DataItem> GetCategories(string dataFileUrl)
         {
-            var dataInCache = _redisCache.Get<List<DataItem>>(dataFileUrl);
-
-            if (dataInCache != null)
+            return _redisCache.GetOrExecute(dataFileUrl, () =>
             {
-                return dataInCache;
-            }
-
-            var categories = _directService.GetCategories(dataFileUrl).ToList();
-            _redisCache.Set(dataFileUrl, categories, TimeSpan.FromHours(1));
-            return categories;
+                var categories = _directService.GetCategories(dataFileUrl).ToList();
+                _redisCache.Set(dataFileUrl, categories, TimeSpan.FromHours(1));
+                return categories;
+            });
         }
 
         public string GetCredits(string creditsFileUrl)
         {
-            var dataInCache = _redisCache.Get<string>(creditsFileUrl);
-
-            if (!string.IsNullOrWhiteSpace(dataInCache))
+            return _redisCache.GetOrExecute(creditsFileUrl, () =>
             {
-                return dataInCache;
-            }
-
-            var credits = _directService.GetCredits(creditsFileUrl);
-            _redisCache.Set(creditsFileUrl, credits, TimeSpan.FromHours(1));
-            return credits;
+                var credits = _directService.GetCredits(creditsFileUrl);
+                _redisCache.Set(creditsFileUrl, credits, TimeSpan.FromHours(1));
+                return credits;
+            });
         }
     }
 }
