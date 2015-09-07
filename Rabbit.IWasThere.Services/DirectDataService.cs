@@ -8,7 +8,7 @@ namespace Rabbit.IWasThere.Services
     {
         public IEnumerable<DataItem> GetCategories(string dataFileUrl)
         {
-            return DataHelper.ParseJsonFromUrl(dataFileUrl);
+            return DataHelper.GetRemoteJsonData(dataFileUrl);
         }
 
         public string GetCredits(string creditsFileUrl)

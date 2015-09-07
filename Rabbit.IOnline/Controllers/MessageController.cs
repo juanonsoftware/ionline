@@ -1,5 +1,6 @@
 ﻿using PagedList;
 using Rabbit.Foundation.Text;
+using Rabbit.Helper;
 using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.Dapper;
@@ -92,20 +93,7 @@ namespace Rabbit.IOnline.Controllers
             var categories =
                 _dataService.GetCategories(ConfigurationManager.AppSettings["CategoryDataFilePath"]).ToList();
 
-            var messageCount = 0;
-            if (catid.HasValue)
-            {
-                var countInfo = _messageCounter.CountMessages(catid.Value);
-                var categoryCount = countInfo.SingleOrDefault(x => x.Key == catid.Value);
-                if (!Equals(categoryCount, default(KeyValuePair<Guid, int>)))
-                {
-                    messageCount = categoryCount.Value;
-                }
-            }
-            else
-            {
-                messageCount = _messageRepository.Count();
-            }
+            var messageCount = GetMessageCount(catid);
 
             var listOfMessages = catid.HasValue
                  ? _messageRepository.GetMessages(catid.Value, pageIndex - 1, pageSize)
@@ -136,6 +124,27 @@ namespace Rabbit.IOnline.Controllers
             {
                 return View(vm);
             }
+        }
+
+        private int GetMessageCount(Guid? catid)
+        {
+            var messageCount = 0;
+
+            if (catid.HasValue)
+            {
+                var countInfo = _messageCounter.CountMessages(catid.Value);
+                var categoryCount = countInfo.SingleOrDefault(x => x.Key == catid.Value);
+                if (!Equals(categoryCount, default(KeyValuePair<Guid, int>)))
+                {
+                    messageCount = categoryCount.Value;
+                }
+            }
+            else
+            {
+                messageCount = _messageRepository.Count();
+            }
+
+            return messageCount;
         }
     }
 }

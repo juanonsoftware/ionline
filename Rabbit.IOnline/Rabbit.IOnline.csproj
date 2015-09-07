@@ -236,6 +236,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rabbit.Helper\Rabbit.Helper.csproj">
+      <Project>{90D38AF3-E84B-49CE-B45E-D652196782A0}</Project>
+      <Name>Rabbit.Helper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rabbit.IWasThere.Common\Rabbit.IWasThere.Common.csproj">
       <Project>{EB60EAA6-42EE-4EB0-99FD-7A911FBEFEAD}</Project>
       <Name>Rabbit.IWasThere.Common</Name>

@@ -1,4 +1,5 @@
-﻿using Rabbit.IOnline.Models.ViewModels;
+﻿using Rabbit.Helper;
+using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.Dapper;
