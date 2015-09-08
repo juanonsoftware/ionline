@@ -1,5 +1,5 @@
-﻿using System.Web.Mvc;
-using Rabbit.IOnline.Models;
+﻿using Rabbit.Web.Mvc.Filters;
+using System.Web.Mvc;
 
 namespace Rabbit.IOnline.App_Start
 {
@@ -8,7 +8,7 @@ namespace Rabbit.IOnline.App_Start
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new RequireHttpsOnProductionAttribute());
+            filters.Add(new RequireHttpsInProductionAttribute());
         }
     }
 }

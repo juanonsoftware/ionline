@@ -72,6 +72,10 @@
       <HintPath>..\packages\Rabbit.SerializationMaster.ServiceStack.1.0.0\lib\Rabbit.SerializationMaster.ServiceStack.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rabbit.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitWebMvc.1.0.0\lib\Rabbit.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Recaptcha.Web, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RecaptchaNet.1.3\lib\net45\Recaptcha.Web.dll</HintPath>
       <Private>True</Private>
@@ -168,7 +172,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\RequireHttpsOnProductionAttribute.cs" />
     <Compile Include="Models\ViewModels\CategoryStatViewModel.cs" />
     <Compile Include="Models\ViewModels\SiteCreditsViewModel.cs" />
     <Compile Include="Models\SystemDbInitializer.cs" />
