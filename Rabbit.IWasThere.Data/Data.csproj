@@ -35,9 +35,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Rabbit.IWasThere.Domain\Rabbit.IWasThere.Domain.csproj">
+    <ProjectReference Include="..\Rabbit.IWasThere.Domain\Domain.csproj">
       <Project>{a4a5edaf-8cb9-42cc-a3e8-2311601af1a8}</Project>
-      <Name>Rabbit.IWasThere.Domain</Name>
+      <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

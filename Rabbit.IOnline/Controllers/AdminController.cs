@@ -1,21 +1,22 @@
 ﻿using Rabbit.IWasThere.Data;
-using Rabbit.IWasThere.Data.EF;
+using Rabbit.IWasThere.Data.Dapper;
+using System.Configuration;
 using System.Web.Mvc;
 
 namespace Rabbit.IOnline.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IMessageRepository _messageRepository;
+        private readonly IMessageCounter _messageCounter;
 
         public AdminController()
         {
-            _messageRepository = new EfMessageRepository();
+            _messageCounter = new DapperMessageCounter(ConfigurationManager.ConnectionStrings["IOnlineDb"].ConnectionString);
         }
 
         public ActionResult Index()
         {
-            var totalMessages = _messageRepository.Count();
+            var totalMessages = _messageCounter.CountAllMessages();
             return new ContentResult()
             {
                 Content = "Total messages: " + totalMessages

@@ -11,7 +11,6 @@ using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
 using ServiceStack;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
@@ -96,8 +95,8 @@ namespace Rabbit.IOnline.Controllers
             var messageCount = GetMessageCount(catid);
 
             var listOfMessages = catid.HasValue
-                 ? _messageRepository.GetMessages(catid.Value, pageIndex - 1, pageSize)
-                 : _messageRepository.GetMessages(pageIndex - 1, pageSize);
+                 ? _messageRepository.GetMessages(catid.Value, pageIndex - 1, pageSize).ToList()
+                 : _messageRepository.GetMessages(pageIndex - 1, pageSize).ToList();
 
             var messages = listOfMessages.Select(x => new MessageViewModel()
             {
@@ -128,23 +127,9 @@ namespace Rabbit.IOnline.Controllers
 
         private int GetMessageCount(Guid? catid)
         {
-            var messageCount = 0;
-
-            if (catid.HasValue)
-            {
-                var countInfo = _messageCounter.CountMessages(catid.Value);
-                var categoryCount = countInfo.SingleOrDefault(x => x.Key == catid.Value);
-                if (!Equals(categoryCount, default(KeyValuePair<Guid, int>)))
-                {
-                    messageCount = categoryCount.Value;
-                }
-            }
-            else
-            {
-                messageCount = _messageRepository.Count();
-            }
-
-            return messageCount;
+            return catid.HasValue
+                ? _messageCounter.CountMessages(catid.Value)
+                : _messageCounter.CountAllMessages();
         }
     }
 }

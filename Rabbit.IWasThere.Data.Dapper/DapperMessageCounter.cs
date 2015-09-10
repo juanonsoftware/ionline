@@ -4,40 +4,56 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 
 namespace Rabbit.IWasThere.Data.Dapper
 {
     public class DapperMessageCounter : IMessageCounter
     {
-        private readonly SqlConnection _sqlConnection;
+        private readonly string _connectionString;
 
         public DapperMessageCounter(string connectionString)
-            : this(new SqlConnection(connectionString))
         {
-        }
-
-        private DapperMessageCounter(SqlConnection sqlConnection)
-        {
-            _sqlConnection = sqlConnection;
+            _connectionString = connectionString;
         }
 
         public IDictionary<Guid, int> CountMessages()
         {
-            using (_sqlConnection)
+            using (var sqlConnection = new SqlConnection(_connectionString))
             {
-                return
-                    _sqlConnection.Query("CountMessages", new { categoryId = Guid.Empty }, commandType: CommandType.StoredProcedure)
-                        .ToDictionary(row => (Guid)row.CategoryId, row => (int)row.MessageCount);
+                var commandBuilder = new StringBuilder();
+                commandBuilder.Append("exec CountMessages @categoryId;");
+                commandBuilder.Append("exec CountAllMessages;");
+
+                var command = new CommandDefinition(commandBuilder.ToString(), new { categoryId = Guid.Empty });
+
+                var resultReader = sqlConnection.QueryMultiple(command);
+
+                var byCategoriesResult = resultReader.Read().ToDictionary(row => (Guid)row.CategoryId, row => (int)row.MessageCount);
+                var totalResult = resultReader.Read().ToDictionary(row => (Guid)row.CategoryId, row => (int)row.MessageCount);
+
+                return byCategoriesResult.Union(totalResult).ToDictionary(x => x.Key, x => x.Value);
             }
         }
 
-        public IDictionary<Guid, int> CountMessages(Guid categoryId)
+        public int CountMessages(Guid categoryId)
         {
-            using (_sqlConnection)
+            using (var sqlConnection = new SqlConnection(_connectionString))
             {
                 return
-                    _sqlConnection.Query("CountMessages", new { categoryId = categoryId }, commandType: CommandType.StoredProcedure)
-                        .ToDictionary(row => (Guid)row.CategoryId, row => (int)row.MessageCount);
+                    sqlConnection.Query("CountMessages", new { categoryId = categoryId },
+                        commandType: CommandType.StoredProcedure)
+                        .ToDictionary(row => (Guid)row.CategoryId, row => (int)row.MessageCount).First().Value;
+            }
+        }
+
+        public int CountAllMessages()
+        {
+            using (var sqlConnection = new SqlConnection(_connectionString))
+            {
+                return
+                    sqlConnection.Query("CountAllMessages", commandType: CommandType.StoredProcedure)
+                        .ToDictionary(row => (Guid)row.CategoryId, row => (int)row.MessageCount).First().Value;
             }
         }
     }

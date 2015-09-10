@@ -240,33 +240,33 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Rabbit.Helper\Rabbit.Helper.csproj">
+    <ProjectReference Include="..\Rabbit.Helper\Helper.csproj">
       <Project>{90D38AF3-E84B-49CE-B45E-D652196782A0}</Project>
-      <Name>Rabbit.Helper</Name>
+      <Name>Helper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Common\Rabbit.IWasThere.Common.csproj">
+    <ProjectReference Include="..\Rabbit.IWasThere.Common\Common.csproj">
       <Project>{EB60EAA6-42EE-4EB0-99FD-7A911FBEFEAD}</Project>
-      <Name>Rabbit.IWasThere.Common</Name>
+      <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Data.Dapper\Rabbit.IWasThere.Data.Dapper.csproj">
+    <ProjectReference Include="..\Rabbit.IWasThere.Data.Dapper\Data.Dapper.csproj">
       <Project>{3198D9AF-1742-4160-8D7A-FBC46B1DAC04}</Project>
-      <Name>Rabbit.IWasThere.Data.Dapper</Name>
+      <Name>Data.Dapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Data.EF\Rabbit.IWasThere.Data.EF.csproj">
+    <ProjectReference Include="..\Rabbit.IWasThere.Data.EF\Data.EF.csproj">
       <Project>{d104ff65-44c6-4fbc-80b8-cc2f7c917dab}</Project>
-      <Name>Rabbit.IWasThere.Data.EF</Name>
+      <Name>Data.EF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Data\Rabbit.IWasThere.Data.csproj">
+    <ProjectReference Include="..\Rabbit.IWasThere.Data\Data.csproj">
       <Project>{3d8e0083-05bf-403d-82e0-781156a4c8d1}</Project>
-      <Name>Rabbit.IWasThere.Data</Name>
+      <Name>Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Domain\Rabbit.IWasThere.Domain.csproj">
+    <ProjectReference Include="..\Rabbit.IWasThere.Domain\Domain.csproj">
       <Project>{a4a5edaf-8cb9-42cc-a3e8-2311601af1a8}</Project>
-      <Name>Rabbit.IWasThere.Domain</Name>
+      <Name>Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Services\Rabbit.IWasThere.Services.csproj">
+    <ProjectReference Include="..\Rabbit.IWasThere.Services\Services.csproj">
       <Project>{F8EA6962-80D1-4B6B-A189-746EC8A452A5}</Project>
-      <Name>Rabbit.IWasThere.Services</Name>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

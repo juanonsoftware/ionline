@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.IOnline", "Rabbit.IOnline\Rabbit.IOnline.csproj", "{C75D76DF-BA9D-4F3F-9684-E5B53CD74C2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOnline", "Rabbit.IOnline\IOnline.csproj", "{C75D76DF-BA9D-4F3F-9684-E5B53CD74C2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.IWasThere.Domain", "Rabbit.IWasThere.Domain\Rabbit.IWasThere.Domain.csproj", "{A4A5EDAF-8CB9-42CC-A3E8-2311601AF1A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Rabbit.IWasThere.Domain\Domain.csproj", "{A4A5EDAF-8CB9-42CC-A3E8-2311601AF1A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.IWasThere.Data", "Rabbit.IWasThere.Data\Rabbit.IWasThere.Data.csproj", "{3D8E0083-05BF-403D-82E0-781156A4C8D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Rabbit.IWasThere.Data\Data.csproj", "{3D8E0083-05BF-403D-82E0-781156A4C8D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.IWasThere.Data.EF", "Rabbit.IWasThere.Data.EF\Rabbit.IWasThere.Data.EF.csproj", "{D104FF65-44C6-4FBC-80B8-CC2F7C917DAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.EF", "Rabbit.IWasThere.Data.EF\Data.EF.csproj", "{D104FF65-44C6-4FBC-80B8-CC2F7C917DAB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9836C238-AA97-4223-B5E2-340DEACFEA63}"
 	ProjectSection(SolutionItems) = preProject
@@ -22,13 +22,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Credits.txt = Credits.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.IWasThere.Data.Dapper", "Rabbit.IWasThere.Data.Dapper\Rabbit.IWasThere.Data.Dapper.csproj", "{3198D9AF-1742-4160-8D7A-FBC46B1DAC04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Dapper", "Rabbit.IWasThere.Data.Dapper\Data.Dapper.csproj", "{3198D9AF-1742-4160-8D7A-FBC46B1DAC04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.IWasThere.Common", "Rabbit.IWasThere.Common\Rabbit.IWasThere.Common.csproj", "{EB60EAA6-42EE-4EB0-99FD-7A911FBEFEAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Rabbit.IWasThere.Common\Common.csproj", "{EB60EAA6-42EE-4EB0-99FD-7A911FBEFEAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.IWasThere.Services", "Rabbit.IWasThere.Services\Rabbit.IWasThere.Services.csproj", "{F8EA6962-80D1-4B6B-A189-746EC8A452A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Rabbit.IWasThere.Services\Services.csproj", "{F8EA6962-80D1-4B6B-A189-746EC8A452A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.Helper", "Rabbit.Helper\Rabbit.Helper.csproj", "{90D38AF3-E84B-49CE-B45E-D652196782A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Rabbit.Helper\Helper.csproj", "{90D38AF3-E84B-49CE-B45E-D652196782A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.DocumentDB", "Rabbit.IWasThere.Data.DocumentDB\Data.DocumentDB.csproj", "{B7207135-D76E-4C2F-9379-CDBB508119C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{90D38AF3-E84B-49CE-B45E-D652196782A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90D38AF3-E84B-49CE-B45E-D652196782A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90D38AF3-E84B-49CE-B45E-D652196782A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7207135-D76E-4C2F-9379-CDBB508119C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7207135-D76E-4C2F-9379-CDBB508119C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7207135-D76E-4C2F-9379-CDBB508119C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7207135-D76E-4C2F-9379-CDBB508119C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

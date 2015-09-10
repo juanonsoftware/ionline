@@ -24,7 +24,5 @@ namespace Rabbit.IWasThere.Data
         Message GetById(Guid id);
 
         void Save(Message message);
-
-        int Count();
     }
 }
