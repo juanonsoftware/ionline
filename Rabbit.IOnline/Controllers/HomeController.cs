@@ -1,8 +1,8 @@
 ﻿using Rabbit.Helper;
+using Rabbit.IOnline.Data.RevenDB;
 using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
-using Rabbit.IWasThere.Data.Dapper;
 using Rabbit.IWasThere.Services;
 using System;
 using System.Collections.Generic;
@@ -19,8 +19,10 @@ namespace Rabbit.IOnline.Controllers
 
         public HomeController()
         {
+            var documentStore = DocumentStoreManager.GetCurrent(ConfigurationManager.AppSettings["RavenDbUrl"], ConfigurationManager.AppSettings["RavenDbApiKey"]);
+            _messageCounter = new RavenDbMessageCounter(documentStore);
+
             _dataService = DataServiceFactory.Create();
-            _messageCounter = new DapperMessageCounter(ConfigurationManager.ConnectionStrings["IOnlineDb"].ConnectionString);
         }
 
         public ActionResult Index()

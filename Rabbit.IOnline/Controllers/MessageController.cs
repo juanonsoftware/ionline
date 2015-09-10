@@ -1,10 +1,9 @@
 ﻿using PagedList;
 using Rabbit.Foundation.Text;
 using Rabbit.Helper;
+using Rabbit.IOnline.Data.RevenDB;
 using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Data;
-using Rabbit.IWasThere.Data.Dapper;
-using Rabbit.IWasThere.Data.EF;
 using Rabbit.IWasThere.Domain;
 using Rabbit.IWasThere.Services;
 using Recaptcha.Web;
@@ -25,9 +24,12 @@ namespace Rabbit.IOnline.Controllers
 
         public MessageController()
         {
-            _messageRepository = new EfMessageRepository();
+            var documentStore = DocumentStoreManager.GetCurrent(ConfigurationManager.AppSettings["RavenDbUrl"], ConfigurationManager.AppSettings["RavenDbApiKey"]);
+
+            _messageRepository = new RevenDbMessageRepository(documentStore);
+            _messageCounter = new RavenDbMessageCounter(documentStore);
+
             _dataService = DataServiceFactory.Create();
-            _messageCounter = new DapperMessageCounter(ConfigurationManager.ConnectionStrings["IOnlineDb"].ConnectionString);
         }
 
         [HttpPost]
