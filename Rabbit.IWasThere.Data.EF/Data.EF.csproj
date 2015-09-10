@@ -50,6 +50,10 @@
     <Compile Include="Migrations\201509100703324_AddCountAllMessagesSPAndUpdateCountMessagesSP.Designer.cs">
       <DependentUpon>201509100703324_AddCountAllMessagesSPAndUpdateCountMessagesSP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509100857377_FixCountAllMessagesSP.cs" />
+    <Compile Include="Migrations\201509100857377_FixCountAllMessagesSP.Designer.cs">
+      <DependentUpon>201509100857377_FixCountAllMessagesSP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509100703324_AddCountAllMessagesSPAndUpdateCountMessagesSP.resx">
       <DependentUpon>201509100703324_AddCountAllMessagesSPAndUpdateCountMessagesSP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509100857377_FixCountAllMessagesSP.resx">
+      <DependentUpon>201509100857377_FixCountAllMessagesSP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
