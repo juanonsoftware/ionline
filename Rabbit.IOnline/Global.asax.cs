@@ -30,8 +30,8 @@ namespace Rabbit.IOnline
 
         private void InitializeDatabase()
         {
-            //new DbMigrator(new Configuration()).Update();
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
+            new DbMigrator(new Configuration()).Update();
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
         }
 
         private void ConfigureSerialization()
