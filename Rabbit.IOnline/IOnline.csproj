@@ -41,6 +41,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.1.0\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -171,9 +179,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Autofac\DataServiceModule.cs" />
+    <Compile Include="App_Start\Autofac\EfDataModule.cs" />
+    <Compile Include="App_Start\Autofac\RavenDbDataModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SystemConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -183,7 +195,6 @@
     </Compile>
     <Compile Include="Models\ViewModels\CategoryStatViewModel.cs" />
     <Compile Include="Models\ViewModels\SiteCreditsViewModel.cs" />
-    <Compile Include="Models\SystemDbInitializer.cs" />
     <Compile Include="Models\ViewModels\EditMessageViewModel.cs" />
     <Compile Include="Models\ViewModels\IndexViewModel.cs" />
     <Compile Include="Models\ViewModels\ListViewModel.cs" />
@@ -242,9 +253,7 @@
     <Content Include="Views\Message\Save.cshtml" />
     <Content Include="Views\Home\SiteCredits.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -266,7 +275,7 @@
       <Name>Data.Dapper</Name>
     </ProjectReference>
     <ProjectReference Include="..\Rabbit.IWasThere.Data.EF\Data.EF.csproj">
-      <Project>{d104ff65-44c6-4fbc-80b8-cc2f7c917dab}</Project>
+      <Project>{D104FF65-44C6-4FBC-80B8-CC2F7C917DAB}</Project>
       <Name>Data.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Rabbit.IWasThere.Data\Data.csproj">

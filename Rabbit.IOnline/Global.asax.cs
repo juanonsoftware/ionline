@@ -1,15 +1,9 @@
-﻿using System.Data.Entity.Migrations;
-using Rabbit.IOnline.App_Start;
-using Rabbit.IWasThere.Data.EF;
-using Rabbit.SerializationMaster;
-using Rabbit.SerializationMaster.ServiceStack;
-using System.Data.Entity;
+﻿using Rabbit.IOnline.App_Start;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Configuration = Rabbit.IWasThere.Data.EF.Migrations.Configuration;
 
 namespace Rabbit.IOnline
 {
@@ -17,26 +11,16 @@ namespace Rabbit.IOnline
     {
         protected void Application_Start()
         {
+            SystemConfig.ConfigDatabaseMigration();
+            SystemConfig.ConfigureSerialization();
+            SystemConfig.ConfigDependencyContainer();
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            InitializeDatabase();
-            ConfigureSerialization();
-        }
-
-        private void InitializeDatabase()
-        {
-            new DbMigrator(new Configuration()).Update();
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
-        }
-
-        private void ConfigureSerialization()
-        {
-            SerializationContext.Current.Initialize(new JsonSerializationStrategy());
         }
     }
 }

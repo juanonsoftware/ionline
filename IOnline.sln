@@ -34,6 +34,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.DocumentDB", "Rabbit.I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.RevenDB", "Rabbit.IOnline.Data.RevenDB\Data.RevenDB.csproj", "{C4667B1E-6D83-438C-BED6-89E27FD8C2FB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{355C29CD-5BE5-4410-99DB-5D0FB49A8DD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NoSQL", "NoSQL", "{145F704C-A207-47F4-9618-64BAAD196FE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,5 +87,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D104FF65-44C6-4FBC-80B8-CC2F7C917DAB} = {355C29CD-5BE5-4410-99DB-5D0FB49A8DD9}
+		{3198D9AF-1742-4160-8D7A-FBC46B1DAC04} = {355C29CD-5BE5-4410-99DB-5D0FB49A8DD9}
+		{B7207135-D76E-4C2F-9379-CDBB508119C6} = {145F704C-A207-47F4-9618-64BAAD196FE7}
+		{C4667B1E-6D83-438C-BED6-89E27FD8C2FB} = {145F704C-A207-47F4-9618-64BAAD196FE7}
 	EndGlobalSection
 EndGlobal

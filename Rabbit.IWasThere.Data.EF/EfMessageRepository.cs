@@ -8,11 +8,11 @@ namespace Rabbit.IWasThere.Data.EF
 {
     public class EfMessageRepository : IMessageRepository
     {
-        private readonly AppDbContext _context;
+        private readonly IDbContext _context;
 
-        public EfMessageRepository()
+        public EfMessageRepository(IDbContext context)
         {
-            _context = new AppDbContext();
+            _context = context;
         }
 
         public IEnumerable<Message> GetMessages(int pageIndex, int pageSize)
@@ -37,8 +37,6 @@ namespace Rabbit.IWasThere.Data.EF
             {
                 _context.Messages.Add(message);
             }
-
-            _context.SaveChanges();
         }
 
 

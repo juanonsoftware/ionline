@@ -1,6 +1,4 @@
 ﻿using Rabbit.IWasThere.Data;
-using Rabbit.IWasThere.Data.Dapper;
-using System.Configuration;
 using System.Web.Mvc;
 
 namespace Rabbit.IOnline.Controllers
@@ -9,9 +7,9 @@ namespace Rabbit.IOnline.Controllers
     {
         private readonly IMessageCounter _messageCounter;
 
-        public AdminController()
+        public AdminController(IMessageCounter messageCounter)
         {
-            _messageCounter = new DapperMessageCounter(ConfigurationManager.ConnectionStrings["IOnlineDb"].ConnectionString);
+            _messageCounter = messageCounter;
         }
 
         public ActionResult Index()

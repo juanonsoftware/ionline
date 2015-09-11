@@ -1,7 +1,6 @@
 ﻿using PagedList;
 using Rabbit.Foundation.Text;
 using Rabbit.Helper;
-using Rabbit.IOnline.Data.RevenDB;
 using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Domain;
@@ -22,14 +21,11 @@ namespace Rabbit.IOnline.Controllers
         private readonly IDataService _dataService;
         private readonly IMessageCounter _messageCounter;
 
-        public MessageController()
+        public MessageController(IMessageRepository messageRepository, IDataService dataService, IMessageCounter messageCounter)
         {
-            var documentStore = DocumentStoreManager.GetCurrent(ConfigurationManager.AppSettings["RavenDbUrl"], ConfigurationManager.AppSettings["RavenDbApiKey"]);
-
-            _messageRepository = new RevenDbMessageRepository(documentStore);
-            _messageCounter = new RavenDbMessageCounter(documentStore);
-
-            _dataService = DataServiceFactory.Create();
+            _messageRepository = messageRepository;
+            _messageCounter = messageCounter;
+            _dataService = dataService;
         }
 
         [HttpPost]
