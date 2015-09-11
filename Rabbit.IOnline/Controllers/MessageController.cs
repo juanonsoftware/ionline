@@ -31,18 +31,21 @@ namespace Rabbit.IOnline.Controllers
         [HttpPost]
         public ActionResult Save(EditMessageViewModel message)
         {
-            var recaptchaHelper = this.GetRecaptchaVerificationHelper();
+            if (ModelState.IsValid)
+            {
+                var recaptchaHelper = this.GetRecaptchaVerificationHelper();
 
-            if (String.IsNullOrEmpty(recaptchaHelper.Response))
-            {
-                ModelState.AddModelError("", "Captcha answer cannot be empty.");
-            }
-            else
-            {
-                var recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
-                if (recaptchaResult != RecaptchaVerificationResult.Success)
+                if (String.IsNullOrEmpty(recaptchaHelper.Response))
                 {
-                    ModelState.AddModelError("", "Incorrect captcha answer.");
+                    ModelState.AddModelError("", "Captcha answer cannot be empty.");
+                }
+                else
+                {
+                    var recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
+                    if (recaptchaResult != RecaptchaVerificationResult.Success)
+                    {
+                        ModelState.AddModelError("", "Incorrect captcha answer.");
+                    }
                 }
             }
 
@@ -58,15 +61,13 @@ namespace Rabbit.IOnline.Controllers
 
                 return RedirectToAction("Detail", new { msgEntity.Id });
             }
-            else
-            {
-                message.Categories =
-                    _dataService.GetCategories(ConfigurationManager.AppSettings["CategoryDataFilePath"])
-                        .ToSelectListItems()
-                        .ToList();
 
-                return View(message);
-            }
+            message.Categories =
+                _dataService.GetCategories(ConfigurationManager.AppSettings["CategoryDataFilePath"])
+                    .ToSelectListItems()
+                    .ToList();
+
+            return View(message);
         }
 
         public ActionResult Detail(Guid id)
