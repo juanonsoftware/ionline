@@ -81,7 +81,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RabbitWebMvc.1.0.0\lib\Rabbit.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\RabbitWebMvc.1.0.1\lib\Rabbit.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Raven.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
@@ -179,6 +179,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\XForwardedProtoHandleNonHttpsWorker.cs" />
     <Compile Include="App_Start\Autofac\DataServiceModule.cs" />
     <Compile Include="App_Start\Autofac\EfDataModule.cs" />
     <Compile Include="App_Start\Autofac\RavenDbDataModule.cs" />
