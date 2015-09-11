@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Rabbit.Web.Mvc.Filters;
+using System;
 using System.Web.Mvc;
-using Rabbit.Web.Mvc.Filters;
 
 namespace Rabbit.IOnline.App_Start
 {
