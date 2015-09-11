@@ -11,7 +11,7 @@ namespace Rabbit.IOnline
     {
         protected void Application_Start()
         {
-            SystemConfig.ConfigDatabaseMigration();
+            SystemConfig.ConfigDatabase();
             SystemConfig.ConfigureSerialization();
             SystemConfig.ConfigDependencyContainer();
 

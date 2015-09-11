@@ -19,10 +19,14 @@ namespace Rabbit.IOnline.App_Start
             SerializationContext.Current.Initialize(new JsonSerializationStrategy());
         }
 
-        public static void ConfigDatabaseMigration()
+        public static void ConfigDatabase()
         {
-            new DbMigrator(new Configuration()).Update();
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
+            var dbSystem = ConfigurationManager.AppSettings[Constants.DatabaseSystem];
+            if (Constants.SqlServer.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
+            {
+                new DbMigrator(new Configuration()).Update();
+                //Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
+            }
         }
 
         public static void ConfigDependencyContainer()
