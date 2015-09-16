@@ -1,0 +1,12 @@
+[
+	{
+		"Key": "F2F4BE7E-B9EB-44D1-AEC3-0AB035CBF994",
+		"Value": "News",
+		"Misc": "Keep up-to-date about Azure DocumentDB"
+	},
+	{
+		"Key": "065826A7-B0A0-47B2-A6C0-F7D3AC6A3E27",
+		"Value": "How to",
+		"Misc": "How to work with DocumentDB"
+	}
+]

@@ -7,6 +7,7 @@ These websites are deployed from this source repository
 2. **General Software News** http://softnews.apphb.com/
 
 3. **Testing** http://ionline.azurewebsites.net
+This maynot work if the account I am using is expired.
 
 A simple ASP.NET MVC application allow internet users to leave a message of anything he wants.
 Other users can view all messages in the system.

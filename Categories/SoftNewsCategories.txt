@@ -1,0 +1,12 @@
+[
+	{
+		"Key": "2961B68C-D3DE-48BE-ABE0-FE554E4AB49A",
+		"Value": "New Releases",
+		"Misc": "New releases about Tools, Packages, Languages..."
+	},
+	{
+		"Key": "420BD7D7-35B9-4BE4-A8AA-447A81047345",
+		"Value": "Problems Solving",
+		"Misc": "Problems and Solutions to resolve them"
+	}
+]
