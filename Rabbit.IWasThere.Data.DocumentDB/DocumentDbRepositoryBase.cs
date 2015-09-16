@@ -15,6 +15,7 @@ namespace Rabbit.IWasThere.Data.DocumentDB
 
         protected DocumentDbRepositoryBase(string endPoint, string authKey, string databaseId, string documentCollectionId)
         {
+
             _endPoint = endPoint;
             _authKey = authKey;
             _databaseId = databaseId;
