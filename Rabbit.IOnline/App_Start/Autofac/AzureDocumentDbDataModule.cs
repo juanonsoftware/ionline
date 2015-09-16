@@ -1,6 +1,6 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using Autofac.Integration.Mvc;
+using log4net;
 using Rabbit.IWasThere.Data.DocumentDB;
 using System.Configuration;
 
@@ -8,14 +8,15 @@ namespace Rabbit.IOnline.App_Start.Autofac
 {
     public class AzureDocumentDbDataModule : Module
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(AzureDocumentDbDataModule));
+
         protected override void Load(ContainerBuilder builder)
         {
             var documentDbAppKey = ConfigurationManager.AppSettings["DocumentDbAppKey"];
             var documentDbUri = ConfigurationManager.AppSettings["DocumentDbUri"];
 
-            documentDbAppKey = Environment.GetEnvironmentVariable("DocumentDbAppKey");
-            documentDbUri = Environment.GetEnvironmentVariable("DocumentDbUri");
-            
+            Logger.InfoFormat("DocumentDbAppKey: {0}, DocumentDbUri: {1}", documentDbAppKey, documentDbUri);
+
             builder.Register(
                 c => new DocumentDbMessageRepository(documentDbAppKey, documentDbUri))
                 .AsImplementedInterfaces()

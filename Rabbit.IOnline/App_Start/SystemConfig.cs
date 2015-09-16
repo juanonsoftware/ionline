@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using log4net;
 using Rabbit.IOnline.App_Start.Autofac;
 using Rabbit.IWasThere.Common;
 using Rabbit.SerializationMaster;
@@ -14,6 +15,8 @@ namespace Rabbit.IOnline.App_Start
 {
     public static class SystemConfig
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(SystemConfig));
+
         public static void ConfigureSerialization()
         {
             SerializationContext.Current.Initialize(new JsonSerializationStrategy());
@@ -39,6 +42,8 @@ namespace Rabbit.IOnline.App_Start
             builder.RegisterModule(new DataServiceModule());
 
             var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
+            Logger.InfoFormat("DatabaseSystem: {0}", dbSystem);
+
             if (GlobalConstants.RavenDb.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
             {
                 builder.RegisterModule(new RavenDbDataModule());
