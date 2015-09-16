@@ -8,15 +8,14 @@ namespace Rabbit.IWasThere.Data.DocumentDB
 {
     public abstract class DocumentDbRepositoryBase
     {
-        private readonly string _endPoint;
+        private readonly Uri _endPoint;
         private readonly string _authKey;
         private readonly string _databaseId;
         private readonly string _documentCollectionId;
 
         protected DocumentDbRepositoryBase(string endPoint, string authKey, string databaseId, string documentCollectionId)
         {
-
-            _endPoint = endPoint;
+            _endPoint = new Uri(endPoint);
             _authKey = authKey;
             _databaseId = databaseId;
             _documentCollectionId = documentCollectionId;
@@ -30,7 +29,7 @@ namespace Rabbit.IWasThere.Data.DocumentDB
         {
             get
             {
-                return _client ?? (_client = new DocumentClient(new Uri(_endPoint, UriKind.Absolute), _authKey));
+                return _client ?? (_client = new DocumentClient(_endPoint, _authKey));
             }
         }
 

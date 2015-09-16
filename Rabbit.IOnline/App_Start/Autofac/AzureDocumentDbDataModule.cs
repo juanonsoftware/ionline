@@ -23,7 +23,7 @@ namespace Rabbit.IOnline.App_Start.Autofac
                 .InstancePerHttpRequest();
 
             builder.Register(
-                c => new DocumentDbMessageCounter(documentDbAppKey, documentDbUri))
+                c => new DocumentDbMessageCounter(documentDbUri, documentDbAppKey))
                 .AsImplementedInterfaces()
                 .InstancePerHttpRequest();
 
