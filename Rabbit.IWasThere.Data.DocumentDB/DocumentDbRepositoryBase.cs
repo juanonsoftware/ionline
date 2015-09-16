@@ -30,7 +30,7 @@ namespace Rabbit.IWasThere.Data.DocumentDB
         {
             get
             {
-                return _client ?? (_client = new DocumentClient(new Uri(_endPoint), _authKey));
+                return _client ?? (_client = new DocumentClient(new Uri(_endPoint, UriKind.Absolute), _authKey));
             }
         }
 
