@@ -17,6 +17,9 @@ namespace Rabbit.IOnline.App_Start.Autofac
 
             Logger.InfoFormat("DocumentDbAppKey: {0}, DocumentDbUri: {1}", documentDbAppKey, documentDbUri);
 
+            documentDbAppKey = "czZII6NLz/JgWZ35GTR72+qoSlvyIEDxl7z+86/gcd9LVcHAX25dDJTYqlxz4v35WU8oud1pOvBb+KtFBZGMdg==";
+            documentDbUri = "https://rabbitvn.documents.azure.com:443/";
+
             builder.Register(
                 c => new DocumentDbMessageRepository(documentDbAppKey, documentDbUri))
                 .AsImplementedInterfaces()
