@@ -1,11 +1,11 @@
-﻿using Rabbit.Helper;
+﻿using Rabbit.Configuration;
+using Rabbit.Helper;
 using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Services;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -15,17 +15,19 @@ namespace Rabbit.IOnline.Controllers
     {
         private readonly IDataService _dataService;
         private readonly IMessageCounter _messageCounter;
+        private readonly IConfiguration _configuration;
 
-        public HomeController(IMessageCounter messageCounter, IDataService dataService)
+        public HomeController(IMessageCounter messageCounter, IDataService dataService, IConfiguration configuration)
         {
             _messageCounter = messageCounter;
             _dataService = dataService;
+            _configuration = configuration;
         }
 
         public ActionResult Index()
         {
             var categories =
-                _dataService.GetCategories(ConfigurationManager.AppSettings["CategoryDataFilePath"]).ToSelectListItems();
+                _dataService.GetCategories(_configuration.Get(GlobalConstants.CategoryDataFilePath)).ToSelectListItems();
 
             var vm = new IndexViewModel()
             {
@@ -40,7 +42,7 @@ namespace Rabbit.IOnline.Controllers
 
         public ActionResult About()
         {
-            object credits = _dataService.GetCredits(ConfigurationManager.AppSettings["CreditsFilePath"]);
+            object credits = _dataService.GetCredits(_configuration.Get(GlobalConstants.CreditsFilePath));
             return View(credits);
         }
 
@@ -55,7 +57,7 @@ namespace Rabbit.IOnline.Controllers
                 Categories = new List<CategoryStatViewModel>()
             };
 
-            var categories = _dataService.GetCategories(ConfigurationManager.AppSettings["CategoryDataFilePath"]);
+            var categories = _dataService.GetCategories(_configuration.Get(GlobalConstants.CategoryDataFilePath));
 
             foreach (var category in categories)
             {

@@ -1,5 +1,10 @@
 # ionline
-http://ionline.azurewebsites.net
+
+1. **About DocumentDB** http://documentdb.apphb.com/
+
+2. **General Software News** http://softnews.apphb.com/
+
+3. **Testing** http://ionline.azurewebsites.net
 
 A simple ASP.NET MVC application allow internet users to leave a message.
 

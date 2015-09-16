@@ -1,7 +1,9 @@
 ﻿using PagedList;
+using Rabbit.Configuration;
 using Rabbit.Foundation.Text;
 using Rabbit.Helper;
 using Rabbit.IOnline.Models.ViewModels;
+using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Domain;
 using Rabbit.IWasThere.Services;
@@ -9,7 +11,6 @@ using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
 using ServiceStack;
 using System;
-using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -20,11 +21,13 @@ namespace Rabbit.IOnline.Controllers
         private readonly IMessageRepository _messageRepository;
         private readonly IDataService _dataService;
         private readonly IMessageCounter _messageCounter;
+        private readonly IConfiguration _configuration;
 
-        public MessageController(IMessageRepository messageRepository, IDataService dataService, IMessageCounter messageCounter)
+        public MessageController(IMessageRepository messageRepository, IDataService dataService, IMessageCounter messageCounter, IConfiguration configuration)
         {
             _messageRepository = messageRepository;
             _messageCounter = messageCounter;
+            _configuration = configuration;
             _dataService = dataService;
         }
 
@@ -63,7 +66,7 @@ namespace Rabbit.IOnline.Controllers
             }
 
             message.Categories =
-                _dataService.GetCategories(ConfigurationManager.AppSettings["CategoryDataFilePath"])
+                _dataService.GetCategories(_configuration.Get(GlobalConstants.CategoryDataFilePath))
                     .ToSelectListItems()
                     .ToList();
 
@@ -89,7 +92,7 @@ namespace Rabbit.IOnline.Controllers
             var pageSize = s.HasValue ? s.Value : 5;
 
             var categories =
-                _dataService.GetCategories(ConfigurationManager.AppSettings["CategoryDataFilePath"]).ToList();
+                _dataService.GetCategories(_configuration.Get(GlobalConstants.CategoryDataFilePath)).ToList();
 
             var messageCount = GetMessageCount(catid);
 
