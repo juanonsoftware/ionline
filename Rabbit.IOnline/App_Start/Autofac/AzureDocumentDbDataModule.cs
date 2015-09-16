@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using Autofac.Integration.Mvc;
 using Rabbit.IWasThere.Data.DocumentDB;
 using System.Configuration;
@@ -11,6 +12,9 @@ namespace Rabbit.IOnline.App_Start.Autofac
         {
             var documentDbAppKey = ConfigurationManager.AppSettings["DocumentDbAppKey"];
             var documentDbUri = ConfigurationManager.AppSettings["DocumentDbUri"];
+
+            documentDbAppKey = Environment.GetEnvironmentVariable("DocumentDbAppKey");
+            documentDbUri = Environment.GetEnvironmentVariable("DocumentDbUri");
             
             builder.Register(
                 c => new DocumentDbMessageRepository(documentDbAppKey, documentDbUri))
