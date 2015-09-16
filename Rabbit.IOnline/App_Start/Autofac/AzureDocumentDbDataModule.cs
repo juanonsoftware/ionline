@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using log4net;
+using Rabbit.Configuration;
 using Rabbit.IWasThere.Data.DocumentDB;
 using System.Configuration;
 
@@ -18,7 +19,7 @@ namespace Rabbit.IOnline.App_Start.Autofac
             Logger.InfoFormat("DocumentDbAppKey: {0}, DocumentDbUri: {1}", documentDbAppKey, documentDbUri);
 
             builder.Register(
-                c => new DocumentDbMessageRepository(documentDbUri, documentDbAppKey))
+                c => new DocumentDbMessageRepository(c.Resolve<IConfiguration>()))
                 .AsImplementedInterfaces()
                 .InstancePerHttpRequest();
 

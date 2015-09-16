@@ -9,7 +9,6 @@ using System;
 using System.Configuration;
 using System.Data.Entity.Migrations;
 using System.Web.Mvc;
-using Configuration = Rabbit.IWasThere.Data.EF.Migrations.Configuration;
 
 namespace Rabbit.IOnline.App_Start
 {
@@ -27,7 +26,7 @@ namespace Rabbit.IOnline.App_Start
             var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
             if (GlobalConstants.SqlServer.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
             {
-                new DbMigrator(new Configuration()).Update();
+                new DbMigrator(new IWasThere.Data.EF.Migrations.Configuration()).Update();
                 //Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
             }
         }

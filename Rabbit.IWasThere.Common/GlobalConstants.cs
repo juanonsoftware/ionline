@@ -9,5 +9,8 @@ namespace Rabbit.IWasThere.Common
         public const string RavenDb = "RavenDB";
         public const string DocumentDb = "DocumentDB";
         public const string SqlServer = "SQLServer";
+
+        public const string DocumentDbAppKey = "DocumentDbAppKey";
+        public const string DocumentDbUri = "DocumentDbUri";
     }
 }

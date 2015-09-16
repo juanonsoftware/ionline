@@ -1,5 +1,7 @@
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents.Linq;
+using Rabbit.Configuration;
+using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Domain;
 using System;
 using System.Collections.Generic;
@@ -9,8 +11,11 @@ namespace Rabbit.IWasThere.Data.DocumentDB
 {
     public class DocumentDbMessageRepository : DocumentDbRepositoryBase, IMessageRepository
     {
-        public DocumentDbMessageRepository(string endPoint, string authKey)
-            : base(endPoint, authKey, Constants.DatabaseId, Constants.MessagesCollectionId)
+        public DocumentDbMessageRepository(IConfiguration configuration)
+            : base(
+                configuration.Get(GlobalConstants.DocumentDbUri),
+                configuration.Get(GlobalConstants.DocumentDbAppKey),
+                Constants.DatabaseId, Constants.MessagesCollectionId)
         {
         }
 

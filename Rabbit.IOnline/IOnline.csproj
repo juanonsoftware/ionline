@@ -80,6 +80,10 @@
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rabbit.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rabbit.Configuration.1.0.0\lib\Rabbit.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Rabbit.Foundation, Version=1.0.0.31909, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rabbit.Foundation.1.4.0\lib\Rabbit.Foundation.dll</HintPath>
       <Private>True</Private>

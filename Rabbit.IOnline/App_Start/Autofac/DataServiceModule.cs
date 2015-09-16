@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Rabbit.Configuration;
 using Rabbit.IWasThere.Services;
 
 namespace Rabbit.IOnline.App_Start.Autofac
@@ -9,6 +10,7 @@ namespace Rabbit.IOnline.App_Start.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             builder.Register(c => DataServiceFactory.Create()).InstancePerHttpRequest();
+            builder.RegisterType<EnvironmentAwareAppSettingsConfiguration>().AsImplementedInterfaces().SingleInstance();
 
             base.Load(builder);
         }
