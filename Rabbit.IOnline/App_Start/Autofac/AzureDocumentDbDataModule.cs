@@ -11,7 +11,7 @@ namespace Rabbit.IOnline.App_Start.Autofac
         {
             var documentDbAppKey = ConfigurationManager.AppSettings["DocumentDbAppKey"];
             var documentDbUri = ConfigurationManager.AppSettings["DocumentDbUri"];
-
+            
             builder.Register(
                 c => new DocumentDbMessageRepository(documentDbAppKey, documentDbUri))
                 .AsImplementedInterfaces()
