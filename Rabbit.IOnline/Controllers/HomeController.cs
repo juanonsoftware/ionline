@@ -51,7 +51,7 @@ namespace Rabbit.IOnline.Controllers
 
             var vm = new SiteCreditsViewModel()
             {
-                MessageCount = stats.First(x => x.Key == Constants.GlobalCategory).Value,
+                MessageCount = stats.First(x => x.Key == GlobalConstants.GlobalCategory).Value,
                 Categories = new List<CategoryStatViewModel>()
             };
 

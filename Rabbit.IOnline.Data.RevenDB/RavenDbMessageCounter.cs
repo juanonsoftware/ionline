@@ -23,7 +23,7 @@ namespace Rabbit.IOnline.Data.RevenDB
             using (var session = _documentStore.OpenSession())
             {
                 var result = session.Query<Message>().AsEnumerable().GroupBy(m => m.CategoryId).ToDictionary(g => g.Key, g => g.Count());
-                result.Add(Constants.GlobalCategory, CountAllMessages());
+                result.Add(GlobalConstants.GlobalCategory, CountAllMessages());
 
                 return result;
             }

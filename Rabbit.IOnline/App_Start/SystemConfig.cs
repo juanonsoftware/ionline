@@ -21,8 +21,8 @@ namespace Rabbit.IOnline.App_Start
 
         public static void ConfigDatabase()
         {
-            var dbSystem = ConfigurationManager.AppSettings[Constants.DatabaseSystem];
-            if (Constants.SqlServer.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
+            var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
+            if (GlobalConstants.SqlServer.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
             {
                 new DbMigrator(new Configuration()).Update();
                 //Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
@@ -38,10 +38,14 @@ namespace Rabbit.IOnline.App_Start
 
             builder.RegisterModule(new DataServiceModule());
 
-            var dbSystem = ConfigurationManager.AppSettings[Constants.DatabaseSystem];
-            if (Constants.RavenDb.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
+            var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
+            if (GlobalConstants.RavenDb.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
             {
                 builder.RegisterModule(new RavenDbDataModule());
+            }
+            else if (GlobalConstants.DocumentDb.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
+            {
+                builder.RegisterModule(new AzureDocumentDbDataModule());
             }
             else
             {

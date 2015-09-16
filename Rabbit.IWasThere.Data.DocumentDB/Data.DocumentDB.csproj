@@ -37,8 +37,13 @@
     <Compile Include="DocumentDbMessageRepository.cs" />
     <Compile Include="DocumentDbRepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceEntity.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rabbit.IWasThere.Common\Common.csproj">
+      <Project>{EB60EAA6-42EE-4EB0-99FD-7A911FBEFEAD}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rabbit.IWasThere.Data\Data.csproj">
       <Project>{3d8e0083-05bf-403d-82e0-781156a4c8d1}</Project>
       <Name>Data</Name>

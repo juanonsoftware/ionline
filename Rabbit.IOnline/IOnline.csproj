@@ -179,6 +179,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Autofac\AzureDocumentDbDataModule.cs" />
     <Compile Include="App_Start\XForwardedProtoHandleNonHttpsWorker.cs" />
     <Compile Include="App_Start\Autofac\DataServiceModule.cs" />
     <Compile Include="App_Start\Autofac\EfDataModule.cs" />
@@ -274,6 +275,10 @@
     <ProjectReference Include="..\Rabbit.IWasThere.Data.Dapper\Data.Dapper.csproj">
       <Project>{3198D9AF-1742-4160-8D7A-FBC46B1DAC04}</Project>
       <Name>Data.Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.IWasThere.Data.DocumentDB\Data.DocumentDB.csproj">
+      <Project>{B7207135-D76E-4C2F-9379-CDBB508119C6}</Project>
+      <Name>Data.DocumentDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\Rabbit.IWasThere.Data.EF\Data.EF.csproj">
       <Project>{D104FF65-44C6-4FBC-80B8-CC2F7C917DAB}</Project>

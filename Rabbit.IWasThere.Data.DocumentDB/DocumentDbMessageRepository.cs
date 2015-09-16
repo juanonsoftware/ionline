@@ -1,3 +1,4 @@
+using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents.Linq;
 using Rabbit.IWasThere.Domain;
 using System;
@@ -17,37 +18,45 @@ namespace Rabbit.IWasThere.Data.DocumentDB
         {
             var offset = pageIndex * pageSize;
 
-            return
-                Client.CreateDocumentQuery<Message>(Documents.DocumentsLink)
-                    .OrderByDescending(m => m.CreatedAt)
-                    .AsEnumerable();
+            return Client.CreateDocumentQuery<ResourceEntity<Message>>(Documents.DocumentsLink)
+                .Where(x => x.Object.CategoryId != Guid.Empty)
+                .OrderByDescending(x => x.Object.CreatedAt)
+                .Select(x => x.Object)
+                .AsEnumerable()
+                .Skip(offset)
+                .Take(pageSize);
         }
 
         public IEnumerable<Message> GetMessages(Guid categoryId, int pageIndex, int pageSize)
         {
-            var offset = pageIndex * pageSize;
+            var options = new FeedOptions()
+            {
+                MaxItemCount = pageSize
+            };
 
-            return
-                Client.CreateDocumentQuery<Message>(Documents.DocumentsLink)
-                    .Where(m => m.CategoryId == categoryId)
-                    .OrderByDescending(m => m.CreatedAt)
-                    .AsEnumerable()
-                    .Skip(offset)
-                    .Take(pageSize);
+            return Client.CreateDocumentQuery<ResourceEntity<Message>>(Documents.DocumentsLink, options)
+                .Where(x => x.Object.CategoryId == categoryId)
+                .OrderByDescending(x => x.Object.CreatedAt)
+                .Select(x => x.Object)
+                .AsEnumerable();
         }
 
         public Message GetById(Guid id)
         {
             return
-                Client.CreateDocumentQuery<Message>(Documents.DocumentsLink)
-                    .Where(m => m.Id == id)
+                Client.CreateDocumentQuery<ResourceEntity<Message>>(Documents.DocumentsLink)
+                    .Where(x => x.Object.Id == id)
+                    .Select(x => x.Object)
                     .AsEnumerable()
                     .FirstOrDefault();
         }
 
         public void Save(Message message)
         {
-            Client.CreateDocumentAsync(Documents.DocumentsLink, message).Wait();
+            Client.CreateDocumentAsync(Documents.DocumentsLink, new ResourceEntity<Message>
+            {
+                Object = message
+            }).Wait();
         }
     }
 }
