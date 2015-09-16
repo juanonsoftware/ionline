@@ -9,8 +9,9 @@ namespace Rabbit.IOnline.App_Start.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(c => DataServiceFactory.Create()).InstancePerHttpRequest();
             builder.RegisterType<EnvironmentAwareAppSettingsConfiguration>().AsImplementedInterfaces().SingleInstance();
+
+            builder.Register(c => DataServiceFactory.Create()).InstancePerHttpRequest();
 
             base.Load(builder);
         }
