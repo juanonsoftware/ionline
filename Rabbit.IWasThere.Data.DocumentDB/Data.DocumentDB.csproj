@@ -63,7 +63,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.Configuration.1.0.0\lib\Rabbit.Configuration.dll</HintPath>
+      <HintPath>..\packages\Rabbit.Configuration.1.0.1\lib\Rabbit.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
