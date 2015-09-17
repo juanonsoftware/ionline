@@ -2,7 +2,7 @@
 using Rabbit.Net.WebCrawling;
 using System.Collections.Generic;
 
-namespace Rabbit.IWasThere.Services
+namespace Rabbit.IWasThere.Services.DirectImpl
 {
     public class DirectDataService : IDataService
     {

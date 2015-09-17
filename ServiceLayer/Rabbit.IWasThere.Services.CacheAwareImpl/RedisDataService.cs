@@ -1,11 +1,12 @@
 ﻿using Rabbit.Cache;
 using Rabbit.Cache.Redis;
 using Rabbit.Foundation.Data;
+using Rabbit.IWasThere.Services.DirectImpl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Rabbit.IWasThere.Services
+namespace Rabbit.IWasThere.Services.CacheAwareImpl
 {
     public class RedisDataService : IDataService
     {

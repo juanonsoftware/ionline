@@ -4,7 +4,7 @@ using Rabbit.SerializationMaster;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Rabbit.IWasThere.Services
+namespace Rabbit.IWasThere.Services.DirectImpl
 {
     public static class DataHelper
     {

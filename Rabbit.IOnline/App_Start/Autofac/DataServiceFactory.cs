@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using Rabbit.IWasThere.Services;
+using Rabbit.IWasThere.Services.CacheAwareImpl;
+using Rabbit.IWasThere.Services.DirectImpl;
 
-namespace Rabbit.IWasThere.Services
+namespace Rabbit.IOnline.App_Start.Autofac
 {
     public class DataServiceFactory
     {

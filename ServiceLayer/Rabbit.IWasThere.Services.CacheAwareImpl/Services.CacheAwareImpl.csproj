@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F8EA6962-80D1-4B6B-A189-746EC8A452A5}</ProjectGuid>
+    <ProjectGuid>{C99844FB-BEC7-4471-B431-71951773ACAA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rabbit.IWasThere.Services</RootNamespace>
-    <AssemblyName>Rabbit.IWasThere.Services</AssemblyName>
+    <RootNamespace>Rabbit.IWasThere.Services.CacheAwareImpl</RootNamespace>
+    <AssemblyName>Rabbit.IWasThere.Services.CacheAwareImpl</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -32,15 +32,44 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="IDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedisDataService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Rabbit.Foundation, Version=1.0.0.31909, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.Foundation.1.4.0\lib\Rabbit.Foundation.dll</HintPath>
+    <ProjectReference Include="..\..\Rabbit.IWasThere.Services\Services.csproj">
+      <Project>{F8EA6962-80D1-4B6B-A189-746EC8A452A5}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.IWasThere.Services.DirectImpl\Services.DirectImpl.csproj">
+      <Project>{DAB4E10E-BE8F-4AC4-B98E-177441EA2804}</Project>
+      <Name>Services.DirectImpl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Rabbit.Cache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rabbit.Cache.1.1.0\lib\Rabbit.Cache.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="Rabbit.Cache.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rabbit.Cache.Redis.1.1.0\lib\Rabbit.Cache.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rabbit.Foundation, Version=1.0.0.31909, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rabbit.Foundation.1.4.0\lib\Rabbit.Foundation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rabbit.Integrations.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rabbit.Integrations.Redis.1.1.2\lib\Rabbit.Integrations.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rabbit.SerializationMaster, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rabbit.SerializationMaster.4.0.0\lib\Rabbit.SerializationMaster.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.0.316.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\StackExchange.Redis.1.0.481\lib\net45\StackExchange.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

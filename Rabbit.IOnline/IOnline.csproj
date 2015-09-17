@@ -200,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Autofac\AzureDocumentDbDataModule.cs" />
+    <Compile Include="App_Start\Autofac\DataServiceFactory.cs" />
     <Compile Include="App_Start\XForwardedProtoHandleNonHttpsWorker.cs" />
     <Compile Include="App_Start\Autofac\DataServiceModule.cs" />
     <Compile Include="App_Start\Autofac\EfDataModule.cs" />
@@ -314,6 +315,14 @@
     <ProjectReference Include="..\Rabbit.IWasThere.Services\Services.csproj">
       <Project>{F8EA6962-80D1-4B6B-A189-746EC8A452A5}</Project>
       <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceLayer\Rabbit.IWasThere.Services.CacheAwareImpl\Services.CacheAwareImpl.csproj">
+      <Project>{C99844FB-BEC7-4471-B431-71951773ACAA}</Project>
+      <Name>Services.CacheAwareImpl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceLayer\Rabbit.IWasThere.Services.DirectImpl\Services.DirectImpl.csproj">
+      <Project>{DAB4E10E-BE8F-4AC4-B98E-177441EA2804}</Project>
+      <Name>Services.DirectImpl</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
