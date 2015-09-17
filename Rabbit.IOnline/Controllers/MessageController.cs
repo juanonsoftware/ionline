@@ -75,12 +75,16 @@ namespace Rabbit.IOnline.Controllers
 
         public ActionResult Detail(Guid id)
         {
+            var categories =
+                _dataService.GetCategories(_configuration.Get(GlobalConstants.CategoryDataFilePath));
+
             var message = _messageRepository.GetById(id);
 
             var vm = new MessageViewModel()
             {
                 Body = message.Body,
                 CreatedAt = message.CreatedAt,
+                CategorySelected = categories.FirstOrDefault(x => string.Equals(x.Key, message.CategoryId.ToString(), StringComparison.InvariantCultureIgnoreCase))
             };
 
             return View(vm);

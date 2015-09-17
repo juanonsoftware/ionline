@@ -11,7 +11,19 @@
     <li class="active">Message created at @Model.CreatedAt.ToString(CultureInfo.InvariantCulture)</li>
 </ol>
 
-<div class="well well-sm" id="preview">
+<div class="well well-sm">
+    @if (Model.CategorySelected != null)
+    {
+        <div>
+            <h4>
+                <span>Posted under @Model.CategorySelected.Value</span>
+                <small>
+                    <a href="@Url.Action("List", "Message", new { catid = Model.CategorySelected.Key })">View ather messages</a>
+                </small>
+            </h4>
+        </div>
+    }
+    <div id="preview"></div>
 </div>
 <input type="hidden" value="@Model.Body" id="msg"/>
 
