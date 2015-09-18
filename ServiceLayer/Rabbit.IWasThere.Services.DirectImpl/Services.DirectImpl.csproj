@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="DataHelper.cs" />
     <Compile Include="DirectDataService.cs" />
+    <Compile Include="DirectDataServiceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

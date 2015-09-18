@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Rabbit.Foundation.Data;
+﻿using Rabbit.Foundation.Data;
+using System.Collections.Generic;
 
 namespace Rabbit.IWasThere.Services
 {

@@ -30,27 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DataServiceFactory.cs" />
     <Compile Include="IApplicationBootstrap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Rabbit.IWasThere.Services\Services.csproj">
-      <Project>{F8EA6962-80D1-4B6B-A189-746EC8A452A5}</Project>
-      <Name>Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ServiceLayer\Rabbit.IWasThere.Services.CacheAwareImpl\Services.CacheAwareImpl.csproj">
-      <Project>{C99844FB-BEC7-4471-B431-71951773ACAA}</Project>
-      <Name>Services.CacheAwareImpl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ServiceLayer\Rabbit.IWasThere.Services.DirectImpl\Services.DirectImpl.csproj">
-      <Project>{DAB4E10E-BE8F-4AC4-B98E-177441EA2804}</Project>
-      <Name>Services.DirectImpl</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
