@@ -4,7 +4,7 @@ using Rabbit.IOnline.Data.RevenDB;
 using Raven.Client;
 using System.Configuration;
 
-namespace Rabbit.IOnline.App_Start.Autofac
+namespace Rabbit.iOnline.Ioc.Autofac.Modules
 {
     public class RavenDbDataModule : Module
     {

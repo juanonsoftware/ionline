@@ -1,25 +1,19 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using log4net;
-using Rabbit.IOnline.App_Start.Autofac;
+using Rabbit.iOnline.Ioc.Autofac.Modules;
 using Rabbit.IWasThere.Common;
-using Rabbit.SerializationMaster;
-using Rabbit.SerializationMaster.ServiceStack;
 using System;
 using System.Configuration;
 using System.Data.Entity.Migrations;
+using System.Reflection;
 using System.Web.Mvc;
 
-namespace Rabbit.IOnline.App_Start
+namespace Rabbit.iOnline.Ioc.Autofac
 {
     public static class SystemConfig
     {
         private static readonly ILog Logger = LogManager.GetLogger(typeof(SystemConfig));
-
-        public static void ConfigureSerialization()
-        {
-            SerializationContext.Current.Initialize(new JsonSerializationStrategy());
-        }
 
         public static void ConfigDatabase()
         {
@@ -31,12 +25,12 @@ namespace Rabbit.IOnline.App_Start
             }
         }
 
-        public static void ConfigDependencyContainer()
+        public static void ConfigDependencyContainer(Assembly controllersAssembly)
         {
             var builder = new ContainerBuilder();
 
             // Register dependencies in controllers
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterControllers(controllersAssembly);
 
             builder.RegisterModule(new DataServiceModule());
 

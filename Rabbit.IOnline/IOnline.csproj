@@ -203,16 +203,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\Autofac\AzureDocumentDbDataModule.cs" />
-    <Compile Include="App_Start\Autofac\DataServiceFactory.cs" />
     <Compile Include="App_Start\XForwardedProtoHandleNonHttpsWorker.cs" />
-    <Compile Include="App_Start\Autofac\DataServiceModule.cs" />
-    <Compile Include="App_Start\Autofac\EfDataModule.cs" />
-    <Compile Include="App_Start\Autofac\RavenDbDataModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\SystemConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -292,6 +286,14 @@
     <ProjectReference Include="..\Rabbit.IOnline.Data.RevenDB\Data.RevenDB.csproj">
       <Project>{C4667B1E-6D83-438C-BED6-89E27FD8C2FB}</Project>
       <Name>Data.RevenDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.iOnline.Ioc.Autofac\Ioc.Autofac.csproj">
+      <Project>{FAE72CCD-ECD1-40BE-80E2-4043B88435AD}</Project>
+      <Name>Ioc.Autofac</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.iOnline.Ioc\Ioc.csproj">
+      <Project>{41D99BBF-B289-4A21-8565-1E41E691DC03}</Project>
+      <Name>Ioc</Name>
     </ProjectReference>
     <ProjectReference Include="..\Rabbit.IWasThere.Common\Common.csproj">
       <Project>{EB60EAA6-42EE-4EB0-99FD-7A911FBEFEAD}</Project>

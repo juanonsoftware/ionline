@@ -4,7 +4,7 @@ using Rabbit.IWasThere.Data.Dapper;
 using Rabbit.IWasThere.Data.EF;
 using System.Configuration;
 
-namespace Rabbit.IOnline.App_Start.Autofac
+namespace Rabbit.iOnline.Ioc.Autofac.Modules
 {
     public class EfDataModule : Module
     {

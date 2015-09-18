@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using Rabbit.IWasThere.Services;
+﻿using Rabbit.IWasThere.Services;
 using Rabbit.IWasThere.Services.CacheAwareImpl;
 using Rabbit.IWasThere.Services.DirectImpl;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
 
-namespace Rabbit.IOnline.App_Start.Autofac
+namespace Rabbit.iOnline.Ioc.Autofac.Modules
 {
     public class DataServiceFactory
     {

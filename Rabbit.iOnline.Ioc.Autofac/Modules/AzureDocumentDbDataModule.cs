@@ -5,7 +5,7 @@ using Rabbit.Configuration;
 using Rabbit.IWasThere.Data.DocumentDB;
 using System.Configuration;
 
-namespace Rabbit.IOnline.App_Start.Autofac
+namespace Rabbit.iOnline.Ioc.Autofac.Modules
 {
     public class AzureDocumentDbDataModule : Module
     {

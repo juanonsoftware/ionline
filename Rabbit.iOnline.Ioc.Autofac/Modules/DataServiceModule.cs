@@ -2,7 +2,7 @@
 using Autofac.Integration.Mvc;
 using Rabbit.Configuration;
 
-namespace Rabbit.IOnline.App_Start.Autofac
+namespace Rabbit.iOnline.Ioc.Autofac.Modules
 {
     public class DataServiceModule : Module
     {
