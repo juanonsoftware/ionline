@@ -269,6 +269,10 @@
       <Project>{FAE72CCD-ECD1-40BE-80E2-4043B88435AD}</Project>
       <Name>Ioc.Autofac</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Rabbit.iOnline.Ioc.SimpleInjector\Ioc.SimpleInjector.csproj">
+      <Project>{AFF18BA1-3646-41F5-A066-43AC2B61D553}</Project>
+      <Name>Ioc.SimpleInjector</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rabbit.iOnline.Ioc\Ioc.csproj">
       <Project>{41D99BBF-B289-4A21-8565-1E41E691DC03}</Project>
       <Name>Ioc</Name>

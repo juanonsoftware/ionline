@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FAE72CCD-ECD1-40BE-80E2-4043B88435AD}</ProjectGuid>
+    <ProjectGuid>{AFF18BA1-3646-41F5-A066-43AC2B61D553}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rabbit.iOnline.Ioc.Autofac</RootNamespace>
-    <AssemblyName>Rabbit.iOnline.Ioc.Autofac</AssemblyName>
+    <RootNamespace>Rabbit.iOnline.Ioc.SimpleInjector</RootNamespace>
+    <AssemblyName>Rabbit.iOnline.Ioc.SimpleInjector</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -32,65 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AutofacApplicationBootstrap.cs" />
-    <Compile Include="Modules\AzureDocumentDbDataModule.cs" />
-    <Compile Include="Modules\DataServiceModule.cs" />
-    <Compile Include="Modules\EfDataModule.cs" />
-    <Compile Include="Modules\RavenDbDataModule.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SystemConfig.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Rabbit.IOnline.Data.RevenDB\Data.RevenDB.csproj">
-      <Project>{C4667B1E-6D83-438C-BED6-89E27FD8C2FB}</Project>
-      <Name>Data.RevenDB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rabbit.iOnline.Ioc\Ioc.csproj">
-      <Project>{41d99bbf-b289-4a21-8565-1e41e691dc03}</Project>
-      <Name>Ioc</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Common\Common.csproj">
-      <Project>{EB60EAA6-42EE-4EB0-99FD-7A911FBEFEAD}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Data.Dapper\Data.Dapper.csproj">
-      <Project>{3198D9AF-1742-4160-8D7A-FBC46B1DAC04}</Project>
-      <Name>Data.Dapper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Data.DocumentDB\Data.DocumentDB.csproj">
-      <Project>{B7207135-D76E-4C2F-9379-CDBB508119C6}</Project>
-      <Name>Data.DocumentDB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Data.EF\Data.EF.csproj">
-      <Project>{D104FF65-44C6-4FBC-80B8-CC2F7C917DAB}</Project>
-      <Name>Data.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Data\Data.csproj">
-      <Project>{3D8E0083-05BF-403D-82E0-781156A4C8D1}</Project>
-      <Name>Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Services\Services.csproj">
-      <Project>{F8EA6962-80D1-4B6B-A189-746EC8A452A5}</Project>
-      <Name>Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ServiceLayer\Rabbit.IWasThere.Services.CacheAwareImpl\Services.CacheAwareImpl.csproj">
-      <Project>{C99844FB-BEC7-4471-B431-71951773ACAA}</Project>
-      <Name>Services.CacheAwareImpl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ServiceLayer\Rabbit.IWasThere.Services.DirectImpl\Services.DirectImpl.csproj">
-      <Project>{DAB4E10E-BE8F-4AC4-B98E-177441EA2804}</Project>
-      <Name>Services.DirectImpl</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.3.1.0\lib\net40\Autofac.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Autofac.Integration.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -119,7 +60,24 @@
       <HintPath>..\packages\RavenDB.Client.3.0.3785\lib\net45\Raven.Client.Lightweight.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SimpleInjector, Version=3.0.5.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.0.5\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=3.0.5.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.3.0.5\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web.Mvc, Version=3.0.5.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.Mvc.3.0.5\lib\net40\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Packaging, Version=3.0.5.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Packaging.3.0.5\lib\net40-client\SimpleInjector.Packaging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -149,9 +107,53 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <Compile Include="Packages\AzureDocumentDbPackage.cs" />
+    <Compile Include="Packages\DataServicePackage.cs" />
+    <Compile Include="Packages\EfDataPackage.cs" />
+    <Compile Include="Packages\RavenDbDataPackage.cs" />
+    <Compile Include="SimpleInjectorApplicationBootstrap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemConfig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rabbit.IOnline.Data.RevenDB\Data.RevenDB.csproj">
+      <Project>{C4667B1E-6D83-438C-BED6-89E27FD8C2FB}</Project>
+      <Name>Data.RevenDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.iOnline.Ioc\Ioc.csproj">
+      <Project>{41D99BBF-B289-4A21-8565-1E41E691DC03}</Project>
+      <Name>Ioc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.IWasThere.Common\Common.csproj">
+      <Project>{EB60EAA6-42EE-4EB0-99FD-7A911FBEFEAD}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.IWasThere.Data.Dapper\Data.Dapper.csproj">
+      <Project>{3198D9AF-1742-4160-8D7A-FBC46B1DAC04}</Project>
+      <Name>Data.Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.IWasThere.Data.DocumentDB\Data.DocumentDB.csproj">
+      <Project>{B7207135-D76E-4C2F-9379-CDBB508119C6}</Project>
+      <Name>Data.DocumentDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.IWasThere.Data.EF\Data.EF.csproj">
+      <Project>{D104FF65-44C6-4FBC-80B8-CC2F7C917DAB}</Project>
+      <Name>Data.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.IWasThere.Data\Data.csproj">
+      <Project>{3D8E0083-05BF-403D-82E0-781156A4C8D1}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rabbit.IWasThere.Services\Services.csproj">
+      <Project>{F8EA6962-80D1-4B6B-A189-746EC8A452A5}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

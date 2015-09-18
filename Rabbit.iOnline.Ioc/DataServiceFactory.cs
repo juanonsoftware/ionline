@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace Rabbit.iOnline.Ioc.Autofac.Modules
+namespace Rabbit.iOnline.Ioc
 {
     public class DataServiceFactory
     {
