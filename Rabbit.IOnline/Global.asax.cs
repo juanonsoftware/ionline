@@ -1,26 +1,12 @@
-﻿using Rabbit.IOnline.App_Start;
-using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
+﻿using Rabbit.Web;
 
 namespace Rabbit.IOnline
 {
-    public class MvcApplication : HttpApplication
+    public class MvcApplication : CustomHttpApplication
     {
-        protected void Application_Start()
+        public MvcApplication()
+            : base(new ApplicationBehavior())
         {
-            SystemConfig.ConfigDatabase();
-            SystemConfig.ConfigureSerialization();
-            SystemConfig.ConfigDependencyContainer();
-
-            AreaRegistration.RegisterAllAreas();
-
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

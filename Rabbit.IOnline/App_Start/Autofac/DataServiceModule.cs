@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Rabbit.Configuration;
-using Rabbit.IWasThere.Services;
 
 namespace Rabbit.IOnline.App_Start.Autofac
 {

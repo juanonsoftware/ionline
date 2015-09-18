@@ -38,6 +38,7 @@ namespace Rabbit.IOnline.App_Start.Autofac
 
                 return new RedisDataService(options);
             }
+
             return new DirectDataService();
         }
     }

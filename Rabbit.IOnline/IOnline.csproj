@@ -100,8 +100,12 @@
       <HintPath>..\packages\Rabbit.SerializationMaster.ServiceStack.1.0.0\lib\Rabbit.SerializationMaster.ServiceStack.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rabbit.Web, Version=1.0.5739.17425, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitWeb.1.1.0\lib\Rabbit.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Rabbit.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RabbitWebMvc.1.0.1\lib\Rabbit.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\RabbitWebMvc.1.0.2.1\lib\Rabbit.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Raven.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
@@ -213,6 +217,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="ApplicationBehavior.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
