@@ -7,6 +7,6 @@ namespace Rabbit.IWasThere.Services
     {
         IEnumerable<DataItem> GetCategories(string dataFileUrl);
 
-        string GetCredits(string creditsFileUrl);
+        string GetRemoteContent(string creditsFileUrl);
     }
 }

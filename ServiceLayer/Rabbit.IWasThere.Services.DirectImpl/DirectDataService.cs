@@ -11,7 +11,7 @@ namespace Rabbit.IWasThere.Services.DirectImpl
             return DataHelper.GetRemoteJsonData(dataFileUrl);
         }
 
-        public string GetCredits(string creditsFileUrl)
+        public string GetRemoteContent(string creditsFileUrl)
         {
             return
                new WebRequestWorker().DownloadResponse(new CrawlingOption(creditsFileUrl))

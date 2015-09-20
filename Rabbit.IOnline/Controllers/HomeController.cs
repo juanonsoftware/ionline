@@ -42,7 +42,7 @@ namespace Rabbit.IOnline.Controllers
 
         public ActionResult About()
         {
-            object credits = _dataService.GetCredits(_configuration.Get(GlobalConstants.CreditsFilePath));
+            object credits = _dataService.GetRemoteContent(_configuration.Get(GlobalConstants.CreditsFilePath));
             return View(credits);
         }
 

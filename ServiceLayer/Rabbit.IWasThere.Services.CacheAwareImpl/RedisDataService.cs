@@ -29,11 +29,11 @@ namespace Rabbit.IWasThere.Services.CacheAwareImpl
             });
         }
 
-        public string GetCredits(string creditsFileUrl)
+        public string GetRemoteContent(string creditsFileUrl)
         {
             return _redisCache.GetOrExecute(creditsFileUrl, () =>
             {
-                var credits = _directService.GetCredits(creditsFileUrl);
+                var credits = _directService.GetRemoteContent(creditsFileUrl);
                 _redisCache.Set(creditsFileUrl, credits, TimeSpan.FromHours(1));
                 return credits;
             });

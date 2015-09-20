@@ -50,6 +50,8 @@ namespace Rabbit.iOnline.Ioc.Autofac
                 builder.RegisterModule(new EfDataModule());
             }
 
+            builder.RegisterFilterProvider();
+
             var container = builder.Build();
 
             // Set MVC DI resolver to use our Autofac container

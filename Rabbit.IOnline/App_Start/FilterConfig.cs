@@ -8,6 +8,7 @@ namespace Rabbit.IOnline.App_Start
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new LayoutDataFilterAttribute());
             filters.Add(new RequireHttpsInProductionAttribute(new XForwardedProtoHandleNonHttpsWorker()));
         }
     }

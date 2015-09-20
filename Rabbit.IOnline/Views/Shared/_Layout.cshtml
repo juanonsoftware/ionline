@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Rabbit.Helper
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -32,7 +33,6 @@
 
         ga('create', 'UA-65740873-4', 'auto');
         ga('send', 'pageview');
-
     </script>
 </head>
 <body>
@@ -46,8 +46,8 @@
             </nav>
             <h3 class="text-muted">IOnline Space</h3>
         </div>
-
         @RenderBody()
     </div>
 </body>
+@Html.GetRemoteContent(ViewBag.AdFileUri)
 </html>
