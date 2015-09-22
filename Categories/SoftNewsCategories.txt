@@ -8,5 +8,10 @@
 		"Key": "420BD7D7-35B9-4BE4-A8AA-447A81047345",
 		"Value": "Problems Solving",
 		"Misc": "Problems and Solutions to resolve them"
-	}
+	},
+	{
+		"Key": "420BD7D7-35B9-4BE4-A8AA-447A81047346",
+		"Value": "Showcase",
+		"Misc": ""
+	},
 ]
