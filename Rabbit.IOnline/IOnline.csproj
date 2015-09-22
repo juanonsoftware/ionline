@@ -272,10 +272,6 @@
       <Project>{90D38AF3-E84B-49CE-B45E-D652196782A0}</Project>
       <Name>Helper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IOnline.Data.RevenDB\Data.RevenDB.csproj">
-      <Project>{C4667B1E-6D83-438C-BED6-89E27FD8C2FB}</Project>
-      <Name>Data.RevenDB</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Rabbit.iOnline.Ioc.Autofac\Ioc.Autofac.csproj">
       <Project>{FAE72CCD-ECD1-40BE-80E2-4043B88435AD}</Project>
       <Name>Ioc.Autofac</Name>
@@ -291,18 +287,6 @@
     <ProjectReference Include="..\Rabbit.IWasThere.Common\Common.csproj">
       <Project>{EB60EAA6-42EE-4EB0-99FD-7A911FBEFEAD}</Project>
       <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Data.Dapper\Data.Dapper.csproj">
-      <Project>{3198D9AF-1742-4160-8D7A-FBC46B1DAC04}</Project>
-      <Name>Data.Dapper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Data.DocumentDB\Data.DocumentDB.csproj">
-      <Project>{B7207135-D76E-4C2F-9379-CDBB508119C6}</Project>
-      <Name>Data.DocumentDB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rabbit.IWasThere.Data.EF\Data.EF.csproj">
-      <Project>{D104FF65-44C6-4FBC-80B8-CC2F7C917DAB}</Project>
-      <Name>Data.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Rabbit.IWasThere.Data\Data.csproj">
       <Project>{3d8e0083-05bf-403d-82e0-781156a4c8d1}</Project>
