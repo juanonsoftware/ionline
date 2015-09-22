@@ -1,7 +1,13 @@
-﻿using PagedList;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using PagedList;
 using Rabbit.Configuration;
+using Rabbit.Foundation.Data;
 using Rabbit.Foundation.Text;
 using Rabbit.Helper;
+using Rabbit.IOnline.App_Start;
 using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
@@ -10,9 +16,6 @@ using Rabbit.IWasThere.Services;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
 using ServiceStack;
-using System;
-using System.Linq;
-using System.Web.Mvc;
 
 namespace Rabbit.IOnline.Controllers
 {
@@ -65,18 +68,14 @@ namespace Rabbit.IOnline.Controllers
                 return RedirectToAction("Detail", new { msgEntity.Id });
             }
 
-            message.Categories =
-                _dataService.GetRemoteItems(_configuration.Get(GlobalConstants.CategoryDataFilePath))
-                    .ToSelectListItems()
-                    .ToList();
+            message.Categories = GetRemoteItems().ToSelectListItems().ToList();
 
             return View(message);
         }
 
         public ActionResult Detail(Guid id)
         {
-            var categories =
-                _dataService.GetRemoteItems(_configuration.Get(GlobalConstants.CategoryDataFilePath));
+            var categories = GetRemoteItems();
 
             var message = _messageRepository.GetById(id);
 
@@ -93,10 +92,9 @@ namespace Rabbit.IOnline.Controllers
         public ActionResult List(int? p, int? s, Guid? catid)
         {
             var pageIndex = p.HasValue ? p.Value : 1;
-            var pageSize = s.HasValue ? s.Value : 5;
+            var pageSize = s.HasValue ? s.Value : AppSettings.PageSize;
 
-            var categories =
-                _dataService.GetRemoteItems(_configuration.Get(GlobalConstants.CategoryDataFilePath)).ToList();
+            var categories = GetRemoteItems().ToList();
 
             var messageCount = GetMessageCount(catid);
 
@@ -105,14 +103,14 @@ namespace Rabbit.IOnline.Controllers
                  : _messageRepository.GetMessages(pageIndex - 1, pageSize).ToList();
 
             var messages = listOfMessages.Select(x => new MessageViewModel()
-            {
-                Id = x.Id,
-                Body = x.Body.StripMarkdownMarkup().GetSubstring(50, new string[] { " ", "." }),
-                CreatedAt = x.CreatedAt,
-                CategorySelected =
-                    categories.SingleOrDefault(
-                        c => string.Equals(c.Key, x.CategoryId.ToString(), StringComparison.InvariantCultureIgnoreCase))
-            });
+                {
+                    Id = x.Id,
+                    Body = x.Body.StripMarkdownMarkup().GetSubstring(50, new string[] { " ", "." }),
+                    CreatedAt = x.CreatedAt,
+                    CategorySelected =
+                        categories.SingleOrDefault(
+                            c => x.CategoryId.ToString().Equals(c.Key, StringComparison.InvariantCultureIgnoreCase))
+                });
 
             var pagedList = new StaticPagedList<MessageViewModel>(messages, pageIndex, pageSize, messageCount);
             var vm = new ListViewModel()
@@ -136,6 +134,11 @@ namespace Rabbit.IOnline.Controllers
             return catid.HasValue
                 ? _messageCounter.CountMessages(catid.Value)
                 : _messageCounter.CountAllMessages();
+        }
+
+        private IEnumerable<DataItem> GetRemoteItems()
+        {
+            return _dataService.GetRemoteItems(_configuration.Get(GlobalConstants.CategoryDataFilePath));
         }
     }
 }
