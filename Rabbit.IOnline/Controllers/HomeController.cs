@@ -1,13 +1,14 @@
-﻿using Rabbit.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using Rabbit.Configuration;
+using Rabbit.Foundation.Data;
 using Rabbit.Helper;
 using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
 
 namespace Rabbit.IOnline.Controllers
 {
@@ -26,8 +27,7 @@ namespace Rabbit.IOnline.Controllers
 
         public ActionResult Index()
         {
-            var categories =
-                _dataService.GetCategories(_configuration.Get(GlobalConstants.CategoryDataFilePath)).ToSelectListItems();
+            var categories = GetRemoteItems().ToSelectListItems();
 
             var vm = new IndexViewModel()
             {
@@ -57,7 +57,7 @@ namespace Rabbit.IOnline.Controllers
                 Categories = new List<CategoryStatViewModel>()
             };
 
-            var categories = _dataService.GetCategories(_configuration.Get(GlobalConstants.CategoryDataFilePath));
+            var categories = GetRemoteItems();
 
             foreach (var category in categories)
             {
@@ -76,6 +76,11 @@ namespace Rabbit.IOnline.Controllers
             }
 
             return PartialView(vm);
+        }
+
+        private IEnumerable<DataItem> GetRemoteItems()
+        {
+            return _dataService.GetRemoteItems(_configuration.Get(GlobalConstants.CategoryDataFilePath));
         }
     }
 }

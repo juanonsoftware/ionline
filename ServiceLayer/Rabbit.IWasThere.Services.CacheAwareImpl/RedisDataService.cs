@@ -19,22 +19,22 @@ namespace Rabbit.IWasThere.Services.CacheAwareImpl
             _redisCache = new RedisLabsRedisCacheFactory().Create(options);
         }
 
-        public IEnumerable<DataItem> GetCategories(string dataFileUrl)
+        public IEnumerable<DataItem> GetRemoteItems(string fileUri)
         {
-            return _redisCache.GetOrExecute(dataFileUrl, () =>
+            return _redisCache.GetOrExecute(fileUri, () =>
             {
-                var categories = _directService.GetCategories(dataFileUrl).ToList();
-                _redisCache.Set(dataFileUrl, categories, TimeSpan.FromHours(1));
+                var categories = _directService.GetRemoteItems(fileUri).ToList();
+                _redisCache.Set(fileUri, categories, TimeSpan.FromHours(1));
                 return categories;
             });
         }
 
-        public string GetRemoteContent(string creditsFileUrl)
+        public string GetRemoteContent(string fileUri)
         {
-            return _redisCache.GetOrExecute(creditsFileUrl, () =>
+            return _redisCache.GetOrExecute(fileUri, () =>
             {
-                var credits = _directService.GetRemoteContent(creditsFileUrl);
-                _redisCache.Set(creditsFileUrl, credits, TimeSpan.FromHours(1));
+                var credits = _directService.GetRemoteContent(fileUri);
+                _redisCache.Set(fileUri, credits, TimeSpan.FromHours(1));
                 return credits;
             });
         }

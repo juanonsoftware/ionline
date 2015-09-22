@@ -66,7 +66,7 @@ namespace Rabbit.IOnline.Controllers
             }
 
             message.Categories =
-                _dataService.GetCategories(_configuration.Get(GlobalConstants.CategoryDataFilePath))
+                _dataService.GetRemoteItems(_configuration.Get(GlobalConstants.CategoryDataFilePath))
                     .ToSelectListItems()
                     .ToList();
 
@@ -76,7 +76,7 @@ namespace Rabbit.IOnline.Controllers
         public ActionResult Detail(Guid id)
         {
             var categories =
-                _dataService.GetCategories(_configuration.Get(GlobalConstants.CategoryDataFilePath));
+                _dataService.GetRemoteItems(_configuration.Get(GlobalConstants.CategoryDataFilePath));
 
             var message = _messageRepository.GetById(id);
 
@@ -96,7 +96,7 @@ namespace Rabbit.IOnline.Controllers
             var pageSize = s.HasValue ? s.Value : 5;
 
             var categories =
-                _dataService.GetCategories(_configuration.Get(GlobalConstants.CategoryDataFilePath)).ToList();
+                _dataService.GetRemoteItems(_configuration.Get(GlobalConstants.CategoryDataFilePath)).ToList();
 
             var messageCount = GetMessageCount(catid);
 

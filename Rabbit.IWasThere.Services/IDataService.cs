@@ -5,8 +5,8 @@ namespace Rabbit.IWasThere.Services
 {
     public interface IDataService
     {
-        IEnumerable<DataItem> GetCategories(string dataFileUrl);
+        IEnumerable<DataItem> GetRemoteItems(string fileUri);
 
-        string GetRemoteContent(string creditsFileUrl);
+        string GetRemoteContent(string fileUri);
     }
 }

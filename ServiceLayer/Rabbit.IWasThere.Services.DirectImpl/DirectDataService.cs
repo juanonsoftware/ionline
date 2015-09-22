@@ -1,20 +1,26 @@
-﻿using Rabbit.Foundation.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Rabbit.Foundation.Data;
 using Rabbit.Net.WebCrawling;
-using System.Collections.Generic;
+using Rabbit.SerializationMaster;
 
 namespace Rabbit.IWasThere.Services.DirectImpl
 {
     public class DirectDataService : IDataService
     {
-        public IEnumerable<DataItem> GetCategories(string dataFileUrl)
-        {
-            return DataHelper.GetRemoteJsonData(dataFileUrl);
-        }
-
-        public string GetRemoteContent(string creditsFileUrl)
+        public IEnumerable<DataItem> GetRemoteItems(string fileUri)
         {
             return
-               new WebRequestWorker().DownloadResponse(new CrawlingOption(creditsFileUrl))
+                new WebRequestWorker().DownloadResponse(new CrawlingOption(fileUri))
+                    .ReadAsText()
+                    .Deserialize<List<DataItem>>()
+                    .Where(x => x != null);
+        }
+
+        public string GetRemoteContent(string fileUri)
+        {
+            return
+               new WebRequestWorker().DownloadResponse(new CrawlingOption(fileUri))
                    .ReadAsText();
         }
     }
