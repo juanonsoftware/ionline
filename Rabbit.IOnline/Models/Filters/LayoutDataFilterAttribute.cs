@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using Rabbit.Configuration;
 
-namespace Rabbit.IOnline.App_Start
+namespace Rabbit.IOnline.Models.Filters
 {
     public class LayoutDataFilterAttribute : ActionFilterAttribute
     {

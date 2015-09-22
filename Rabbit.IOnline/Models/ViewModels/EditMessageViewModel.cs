@@ -12,6 +12,7 @@ namespace Rabbit.IOnline.Models.ViewModels
             Categories = new List<SelectListItem>();
         }
 
+        [AllowHtml]
         public string Body { get; set; }
         public Guid CategoryId { get; set; }
 
