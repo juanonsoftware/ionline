@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using PagedList;
-using Rabbit.Configuration;
-using Rabbit.Foundation.Data;
 using Rabbit.Foundation.Text;
 using Rabbit.Helper;
-using Rabbit.IOnline.App_Start;
 using Rabbit.IOnline.Models.ViewModels;
-using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Domain;
 using Rabbit.IWasThere.Services;
@@ -22,16 +17,14 @@ namespace Rabbit.IOnline.Controllers
     public class MessageController : Controller
     {
         private readonly IMessageRepository _messageRepository;
-        private readonly IDataService _dataService;
         private readonly IMessageCounter _messageCounter;
-        private readonly IConfiguration _configuration;
+        private readonly IAppSettings _appSettings;
 
-        public MessageController(IMessageRepository messageRepository, IDataService dataService, IMessageCounter messageCounter, IConfiguration configuration)
+        public MessageController(IMessageRepository messageRepository, IMessageCounter messageCounter, IAppSettings appSettings)
         {
             _messageRepository = messageRepository;
             _messageCounter = messageCounter;
-            _configuration = configuration;
-            _dataService = dataService;
+            _appSettings = appSettings;
         }
 
         [HttpPost]
@@ -68,33 +61,29 @@ namespace Rabbit.IOnline.Controllers
                 return RedirectToAction("Detail", new { msgEntity.Id });
             }
 
-            message.Categories = GetRemoteItems().ToSelectListItems().ToList();
+            message.Categories = _appSettings.Categories.ToSelectListItems().ToList();
 
             return View(message);
         }
 
         public ActionResult Detail(Guid id)
         {
-            var categories = GetRemoteItems();
-
             var message = _messageRepository.GetById(id);
 
             var vm = new MessageViewModel()
             {
                 Body = message.Body,
                 CreatedAt = message.CreatedAt,
-                CategorySelected = categories.FirstOrDefault(x => string.Equals(x.Key, message.CategoryId.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                CategorySelected = _appSettings.Categories.FirstOrDefault(x => string.Equals(x.Key, message.CategoryId.ToString(), StringComparison.InvariantCultureIgnoreCase))
             };
 
             return View(vm);
         }
 
-        public ActionResult List(int? p, int? s, Guid? catid)
+        public ActionResult List(int? p, int? s, Guid? catid, bool? pager)
         {
             var pageIndex = p.HasValue ? p.Value : 1;
-            var pageSize = s.HasValue ? s.Value : AppSettings.PageSize;
-
-            var categories = GetRemoteItems().ToList();
+            var pageSize = s.HasValue ? s.Value : _appSettings.PageSize;
 
             var messageCount = GetMessageCount(catid);
 
@@ -108,7 +97,7 @@ namespace Rabbit.IOnline.Controllers
                     Body = x.Body.StripMarkdownMarkup().GetSubstring(50, new string[] { " ", "." }),
                     CreatedAt = x.CreatedAt,
                     CategorySelected =
-                        categories.SingleOrDefault(
+                        _appSettings.Categories.SingleOrDefault(
                             c => x.CategoryId.ToString().Equals(c.Key, StringComparison.InvariantCultureIgnoreCase))
                 });
 
@@ -116,7 +105,8 @@ namespace Rabbit.IOnline.Controllers
             var vm = new ListViewModel()
             {
                 Messages = pagedList,
-                CategoryId = catid
+                CategoryId = catid,
+                PagerEnabled = pager
             };
 
             if (Request.IsAjaxRequest())
@@ -134,11 +124,6 @@ namespace Rabbit.IOnline.Controllers
             return catid.HasValue
                 ? _messageCounter.CountMessages(catid.Value)
                 : _messageCounter.CountAllMessages();
-        }
-
-        private IEnumerable<DataItem> GetRemoteItems()
-        {
-            return _dataService.GetRemoteItems(_configuration.Get(GlobalConstants.CategoryDataFilePath));
         }
     }
 }

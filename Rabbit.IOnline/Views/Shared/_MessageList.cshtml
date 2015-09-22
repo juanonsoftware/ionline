@@ -37,10 +37,13 @@
     </tbody>
 </table>
 
-@Html.PagedListPager(Model.Messages,
-    page => Url.Action("List", "Message", new { p = page, catid = Model.CategoryId }),
-    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
-    {
-        HttpMethod = "GET",
-        UpdateTargetId = "grid-list",
-    }))
+@if (Model.PagerEnabled.HasValue && Model.PagerEnabled.Value)
+{
+    @Html.PagedListPager(Model.Messages,
+                         page => Url.Action("List", "Message", new { p = page, catid = Model.CategoryId }),
+                         PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+                             {
+                                 HttpMethod = "GET",
+                                 UpdateTargetId = "grid-list",
+                             }))
+}

@@ -32,7 +32,7 @@ namespace Rabbit.iOnline.Ioc.SimpleInjector.Packages
             });
 
             container.RegisterPerWebRequest(() => container.GetInstance<IDataServiceFactory>().Create());
-
+            container.RegisterSingleton<IAppSettings, AppSettings>();
         }
     }
 }

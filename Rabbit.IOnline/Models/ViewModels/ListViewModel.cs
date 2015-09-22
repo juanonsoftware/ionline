@@ -25,5 +25,7 @@ namespace Rabbit.IOnline.Models.ViewModels
         public Guid? CategoryId { get; set; }
 
         public IPagedList<MessageViewModel> Messages { get; set; }
+
+        public bool? PagerEnabled { get; set; }
     }
 }

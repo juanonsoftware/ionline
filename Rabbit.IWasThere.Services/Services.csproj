@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="IAppSettings.cs" />
     <Compile Include="IDataService.cs" />
     <Compile Include="IDataServiceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

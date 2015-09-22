@@ -15,7 +15,6 @@ namespace Rabbit.IWasThere.Common
         public const string DocumentDbAppKey = "DocumentDbAppKey";
         public const string DocumentDbUri = "DocumentDbUri";
 
-        public const string CategoryDataFilePath = "CategoryDataFilePath";
         public const string CreditsFilePath = "CreditsFilePath";
     }
 }

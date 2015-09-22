@@ -32,11 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AppSettings.cs" />
     <Compile Include="DirectDataService.cs" />
     <Compile Include="DirectDataServiceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Rabbit.Configuration">
+      <HintPath>..\..\packages\Rabbit.Configuration.1.0.1\lib\Rabbit.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="Rabbit.Foundation, Version=1.0.0.31909, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Rabbit.Foundation.1.4.0\lib\Rabbit.Foundation.dll</HintPath>
       <Private>True</Private>

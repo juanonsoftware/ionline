@@ -34,6 +34,8 @@ namespace Rabbit.iOnline.Ioc.Autofac.Modules
 
             builder.Register(c => c.Resolve<IDataServiceFactory>().Create()).InstancePerHttpRequest();
 
+            builder.RegisterType<AppSettings>().AsImplementedInterfaces().SingleInstance();
+
             base.Load(builder);
         }
     }

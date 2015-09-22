@@ -19,7 +19,11 @@
     </div>
     <div class="pull-left width-70p">
         <h3>Recent messages</h3>
-        <div id="recent-msgs"></div>
+        <div id="recent-msgs">
+            <div class="spinner-loader">
+                Loading…
+            </div>
+        </div>
         <h3>Write a message <small>of whatever you want to leave</small></h3>
         <div>
             @{Html.RenderPartial("_MessageEditForm", Model.EditMessageViewModel);}
@@ -28,7 +32,10 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $.get('@Url.Action("List", "Message")', function (data) {
+        $.get('@Url.Action("List", "Message", new
+                   {
+                       pager = false
+                   })', function (data) {
             $("#recent-msgs").html(data);
         });
     });

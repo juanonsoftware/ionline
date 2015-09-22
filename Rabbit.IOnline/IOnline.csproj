@@ -188,7 +188,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AppSettings.cs" />
     <Compile Include="Models\Filters\LayoutDataFilterAttribute.cs" />
     <Compile Include="App_Start\XForwardedProtoHandleNonHttpsWorker.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Rabbit.Configuration;
-using Rabbit.Foundation.Data;
 using Rabbit.Helper;
 using Rabbit.IOnline.Models.ViewModels;
 using Rabbit.IWasThere.Common;
@@ -17,17 +16,19 @@ namespace Rabbit.IOnline.Controllers
         private readonly IDataService _dataService;
         private readonly IMessageCounter _messageCounter;
         private readonly IConfiguration _configuration;
+        private readonly IAppSettings _appSettings;
 
-        public HomeController(IMessageCounter messageCounter, IDataService dataService, IConfiguration configuration)
+        public HomeController(IMessageCounter messageCounter, IDataService dataService, IConfiguration configuration, IAppSettings appSettings)
         {
             _messageCounter = messageCounter;
             _dataService = dataService;
             _configuration = configuration;
+            _appSettings = appSettings;
         }
 
         public ActionResult Index()
         {
-            var categories = GetRemoteItems().ToSelectListItems();
+            var categories = _appSettings.Categories.ToSelectListItems();
 
             var vm = new IndexViewModel()
             {
@@ -57,9 +58,7 @@ namespace Rabbit.IOnline.Controllers
                 Categories = new List<CategoryStatViewModel>()
             };
 
-            var categories = GetRemoteItems();
-
-            foreach (var category in categories)
+            foreach (var category in _appSettings.Categories)
             {
                 var categoryStatViewModel = new CategoryStatViewModel()
                 {
@@ -76,11 +75,6 @@ namespace Rabbit.IOnline.Controllers
             }
 
             return PartialView(vm);
-        }
-
-        private IEnumerable<DataItem> GetRemoteItems()
-        {
-            return _dataService.GetRemoteItems(_configuration.Get(GlobalConstants.CategoryDataFilePath));
         }
     }
 }
