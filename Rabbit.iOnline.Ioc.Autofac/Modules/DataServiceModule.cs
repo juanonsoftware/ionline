@@ -32,7 +32,7 @@ namespace Rabbit.iOnline.Ioc.Autofac.Modules
                 return factory;
             }).AsImplementedInterfaces().SingleInstance();
 
-            builder.Register(c => c.Resolve<IDataServiceFactory>().Create()).InstancePerHttpRequest();
+            builder.Register(c => c.Resolve<IDataServiceFactory>().Create()).SingleInstance();
 
             builder.RegisterType<AppSettings>().AsImplementedInterfaces().SingleInstance();
 

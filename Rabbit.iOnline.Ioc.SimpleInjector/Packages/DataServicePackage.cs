@@ -31,7 +31,7 @@ namespace Rabbit.iOnline.Ioc.SimpleInjector.Packages
                 return factory;
             });
 
-            container.RegisterPerWebRequest(() => container.GetInstance<IDataServiceFactory>().Create());
+            container.RegisterSingleton(() => container.GetInstance<IDataServiceFactory>().Create());
             container.RegisterSingleton<IAppSettings, AppSettings>();
         }
     }
