@@ -106,7 +106,7 @@ namespace Rabbit.IOnline.Controllers
             {
                 Messages = pagedList,
                 CategoryId = catid,
-                PagerEnabled = pager
+                PagerEnabled = pager.HasValue ? pager.Value : true
             };
 
             if (Request.IsAjaxRequest())
