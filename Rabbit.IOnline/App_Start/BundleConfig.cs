@@ -32,7 +32,9 @@ namespace Rabbit.IOnline.App_Start
                 .Include("~/Content/bootstrap.css"));
 
             bundles.Add(new StyleBundle("~/Content/css")
-                .Include("~/Content/jumbotron-narrow.css", "~/Content/site.css"));
+                .Include("~/Content/jumbotron-narrow.css",
+                    "~/Content/spinner.css",
+                    "~/Content/site.css"));
 
             bundles.Add(
                 new StyleBundle("~/Content/cssbox", "//cdn.rawgit.com/netvietdev/cssbox/dict/v1.1.1/cssbox.min.css")

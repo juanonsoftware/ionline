@@ -220,6 +220,7 @@
     <Content Include="Content\cssbox.css" />
     <Content Include="Content\jumbotron-narrow.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\spinner.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
