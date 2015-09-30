@@ -1,13 +1,13 @@
 ﻿using Autofac;
-using Autofac.Integration.Mvc;
 using Rabbit.Configuration;
+using Rabbit.IOC;
 using Rabbit.IWasThere.Services;
 using Rabbit.IWasThere.Services.CacheAwareImpl;
 using Rabbit.IWasThere.Services.DirectImpl;
 
 namespace Rabbit.iOnline.Ioc.Autofac.Modules
 {
-    public class DataServiceModule : Module
+    public class DataServiceModule : Module, IModule
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -37,6 +37,16 @@ namespace Rabbit.iOnline.Ioc.Autofac.Modules
             builder.RegisterType<AppSettings>().AsImplementedInterfaces().SingleInstance();
 
             base.Load(builder);
+        }
+
+        public int Index
+        {
+            get { return 0; }
+        }
+
+        public bool IsSatisfied(object condition)
+        {
+            return true;
         }
     }
 }

@@ -1,4 +1,6 @@
 using log4net;
+using Rabbit.IOC;
+using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.DocumentDB;
 using SimpleInjector;
@@ -7,7 +9,7 @@ using System.Configuration;
 
 namespace Rabbit.iOnline.Ioc.SimpleInjector.Packages
 {
-    public class AzureDocumentDbPackage : IPackage
+    public class AzureDocumentDbPackage : ModuleBase, IPackage
     {
         private static readonly ILog Logger = LogManager.GetLogger(typeof(AzureDocumentDbPackage));
 
@@ -20,6 +22,11 @@ namespace Rabbit.iOnline.Ioc.SimpleInjector.Packages
 
             container.RegisterPerWebRequest<IMessageRepository, DocumentDbMessageRepository>();
             container.RegisterPerWebRequest<IMessageCounter>(() => new DocumentDbMessageCounter(documentDbUri, documentDbAppKey));
+        }
+
+        public override bool IsSatisfied(object condition)
+        {
+            return GlobalConstants.DocumentDb.Equals(condition);
         }
     }
 }

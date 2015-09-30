@@ -1,3 +1,5 @@
+using Rabbit.IOC;
+using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data;
 using Rabbit.IWasThere.Data.Dapper;
 using Rabbit.IWasThere.Data.EF;
@@ -7,7 +9,7 @@ using System.Configuration;
 
 namespace Rabbit.iOnline.Ioc.SimpleInjector.Packages
 {
-    public class EfDataPackage : IPackage
+    public class EfDataPackage : ModuleBase, IPackage
     {
         public void RegisterServices(Container container)
         {
@@ -24,6 +26,11 @@ namespace Rabbit.iOnline.Ioc.SimpleInjector.Packages
                 var dbContext = container.GetInstance<IDbContext>();
                 return new EfMessageRepository(dbContext);
             });
+        }
+
+        public override bool IsSatisfied(object condition)
+        {
+            return GlobalConstants.SqlServer.Equals(condition);
         }
     }
 }

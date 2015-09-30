@@ -1,13 +1,15 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using log4net;
-using Rabbit.iOnline.Ioc.Autofac.Modules;
+using Rabbit.IOC;
 using Rabbit.IWasThere.Common;
+using Raven.Abstractions.Extensions;
 using System;
 using System.Configuration;
 using System.Data.Entity.Migrations;
 using System.Reflection;
 using System.Web.Mvc;
+using IModule = Autofac.Core.IModule;
 
 namespace Rabbit.iOnline.Ioc.Autofac
 {
@@ -27,28 +29,19 @@ namespace Rabbit.iOnline.Ioc.Autofac
 
         public static void ConfigDependencyContainer(Assembly controllersAssembly)
         {
+            var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
+            Logger.InfoFormat("DatabaseSystem: {0}", dbSystem);
+
             var builder = new ContainerBuilder();
 
             // Register dependencies in controllers
             builder.RegisterControllers(controllersAssembly);
 
-            builder.RegisterModule(new DataServiceModule());
-
-            var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
-            Logger.InfoFormat("DatabaseSystem: {0}", dbSystem);
-
-            if (GlobalConstants.RavenDb.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
-            {
-                builder.RegisterModule(new RavenDbDataModule());
-            }
-            else if (GlobalConstants.DocumentDb.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
-            {
-                builder.RegisterModule(new AzureDocumentDbDataModule());
-            }
-            else
-            {
-                builder.RegisterModule(new EfDataModule());
-            }
+            // Register all modules
+            ModuleHelper.GetModuleTypes(typeof(SystemConfig).Assembly)
+                .CreateModules()
+                .FilterWith(dbSystem)
+                .ForEach(x => builder.RegisterModule((IModule)x));
 
             builder.RegisterFilterProvider();
 

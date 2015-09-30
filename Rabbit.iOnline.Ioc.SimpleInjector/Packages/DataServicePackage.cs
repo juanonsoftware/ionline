@@ -1,4 +1,5 @@
 using Rabbit.Configuration;
+using Rabbit.IOC;
 using Rabbit.IWasThere.Services;
 using Rabbit.IWasThere.Services.CacheAwareImpl;
 using Rabbit.IWasThere.Services.DirectImpl;
@@ -7,7 +8,7 @@ using SimpleInjector.Packaging;
 
 namespace Rabbit.iOnline.Ioc.SimpleInjector.Packages
 {
-    public class DataServicePackage : IPackage
+    public class DataServicePackage : ModuleBase, IPackage
     {
         public void RegisterServices(Container container)
         {
@@ -33,6 +34,11 @@ namespace Rabbit.iOnline.Ioc.SimpleInjector.Packages
 
             container.RegisterSingleton(() => container.GetInstance<IDataServiceFactory>().Create());
             container.RegisterSingleton<IAppSettings, AppSettings>();
+        }
+
+        public override int Index
+        {
+            get { return 0; }
         }
     }
 }

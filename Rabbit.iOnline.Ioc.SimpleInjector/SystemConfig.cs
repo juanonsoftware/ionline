@@ -1,8 +1,10 @@
 ﻿using log4net;
-using Rabbit.iOnline.Ioc.SimpleInjector.Packages;
+using Rabbit.IOC;
 using Rabbit.IWasThere.Common;
+using Raven.Abstractions.Extensions;
 using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
+using SimpleInjector.Packaging;
 using System;
 using System.Configuration;
 using System.Data.Entity.Migrations;
@@ -39,25 +41,15 @@ namespace Rabbit.iOnline.Ioc.SimpleInjector
 
         private static Container RegisterPackages()
         {
-            var container = new Container();
-
-            new DataServicePackage().RegisterServices(container);
-
             var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
             Logger.InfoFormat("DatabaseSystem: {0}", dbSystem);
 
-            if (GlobalConstants.RavenDb.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
-            {
-                new RavenDbDataPackage().RegisterServices(container);
-            }
-            else if (GlobalConstants.DocumentDb.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
-            {
-                new AzureDocumentDbPackage().RegisterServices(container);
-            }
-            else
-            {
-                new EfDataPackage().RegisterServices(container);
-            }
+            var container = new Container();
+
+            ModuleHelper.GetModuleTypes(typeof(SystemConfig).Assembly)
+                .CreateModules()
+                .FilterWith(dbSystem)
+                .ForEach(x => ((IPackage)x).RegisterServices(container));
 
             return container;
         }

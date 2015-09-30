@@ -2,12 +2,14 @@
 using Autofac.Integration.Mvc;
 using log4net;
 using Rabbit.Configuration;
+using Rabbit.IOC;
+using Rabbit.IWasThere.Common;
 using Rabbit.IWasThere.Data.DocumentDB;
 using System.Configuration;
 
 namespace Rabbit.iOnline.Ioc.Autofac.Modules
 {
-    public class AzureDocumentDbDataModule : Module
+    public class AzureDocumentDbDataModule : Module, IModule
     {
         private static readonly ILog Logger = LogManager.GetLogger(typeof(AzureDocumentDbDataModule));
 
@@ -29,6 +31,16 @@ namespace Rabbit.iOnline.Ioc.Autofac.Modules
                 .InstancePerHttpRequest();
 
             base.Load(builder);
+        }
+
+        public int Index
+        {
+            get { return int.MaxValue; }
+        }
+
+        public bool IsSatisfied(object condition)
+        {
+            return GlobalConstants.DocumentDb.Equals(condition);
         }
     }
 }
