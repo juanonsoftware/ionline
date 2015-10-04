@@ -86,8 +86,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.SerializationMaster, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.SerializationMaster.4.0.0\lib\Rabbit.SerializationMaster.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rabbit.SerializationMaster.4.0.1\lib\Rabbit.SerializationMaster.dll</HintPath>
     </Reference>
     <Reference Include="Rabbit.SerializationMaster.ServiceStack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rabbit.SerializationMaster.ServiceStack.1.0.0\lib\Rabbit.SerializationMaster.ServiceStack.dll</HintPath>
