@@ -1,12 +1,10 @@
-﻿using log4net;
-using Rabbit.IOC;
+﻿using Rabbit.IOC;
 using Rabbit.IWasThere.Common;
 using Raven.Abstractions.Extensions;
 using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
 using SimpleInjector.Packaging;
 using System;
-using System.Configuration;
 using System.Data.Entity.Migrations;
 using System.Reflection;
 using System.Web.Mvc;
@@ -15,11 +13,8 @@ namespace Rabbit.iOnline.Ioc.SimpleInjector
 {
     public static class SystemConfig
     {
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(SystemConfig));
-
-        public static void ConfigDatabase()
+        public static void ConfigDatabase(string dbSystem)
         {
-            var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
             if (GlobalConstants.SqlServer.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
             {
                 new DbMigrator(new IWasThere.Data.EF.Migrations.Configuration()).Update();
@@ -27,9 +22,9 @@ namespace Rabbit.iOnline.Ioc.SimpleInjector
             }
         }
 
-        public static void ConfigDependencyContainer(Assembly controllersAssembly)
+        public static void ConfigDependencyContainer(string dbSystem, Assembly controllersAssembly)
         {
-            var container = RegisterPackages();
+            var container = RegisterPackages(dbSystem);
 
             // Controllers
             container.RegisterMvcControllers(controllersAssembly);
@@ -39,11 +34,8 @@ namespace Rabbit.iOnline.Ioc.SimpleInjector
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
 
-        private static Container RegisterPackages()
+        private static Container RegisterPackages(string dbSystem)
         {
-            var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
-            Logger.InfoFormat("DatabaseSystem: {0}", dbSystem);
-
             var container = new Container();
 
             ModuleHelper.GetModuleTypes(typeof(SystemConfig).Assembly)

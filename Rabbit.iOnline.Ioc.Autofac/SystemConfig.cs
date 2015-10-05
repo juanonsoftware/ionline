@@ -1,11 +1,9 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using log4net;
 using Rabbit.IOC;
 using Rabbit.IWasThere.Common;
 using Raven.Abstractions.Extensions;
 using System;
-using System.Configuration;
 using System.Data.Entity.Migrations;
 using System.Reflection;
 using System.Web.Mvc;
@@ -15,11 +13,8 @@ namespace Rabbit.iOnline.Ioc.Autofac
 {
     public static class SystemConfig
     {
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(SystemConfig));
-
-        public static void ConfigDatabase()
+        public static void ConfigDatabase(string dbSystem)
         {
-            var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
             if (GlobalConstants.SqlServer.Equals(dbSystem, StringComparison.InvariantCultureIgnoreCase))
             {
                 new DbMigrator(new IWasThere.Data.EF.Migrations.Configuration()).Update();
@@ -27,11 +22,8 @@ namespace Rabbit.iOnline.Ioc.Autofac
             }
         }
 
-        public static void ConfigDependencyContainer(Assembly controllersAssembly)
+        public static void ConfigDependencyContainer(string dbSystem, Assembly controllersAssembly)
         {
-            var dbSystem = ConfigurationManager.AppSettings[GlobalConstants.DatabaseSystem];
-            Logger.InfoFormat("DatabaseSystem: {0}", dbSystem);
-
             var builder = new ContainerBuilder();
 
             // Register dependencies in controllers
