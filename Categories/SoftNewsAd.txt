@@ -7,4 +7,4 @@ clicksor_layer_ad_text_color = ''; clicksor_text_link_bg = '';
 clicksor_text_link_color = '#ff3c54'; clicksor_enable_text_link = true;
 clicksor_layer_banner = false;
 </script>
-<script type="text/javascript" src="//b.yu0123456.com/show.php?nid=1&amp;pid=356170&amp;adtype=&amp;sid=601091"></script>
+<script type="text/javascript" src="https://b.yu0123456.com/show.php?nid=1&amp;pid=356170&amp;adtype=&amp;sid=601091"></script>
