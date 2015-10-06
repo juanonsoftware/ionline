@@ -10,7 +10,7 @@ namespace Rabbit.IOnline.App_Start
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new LayoutDataFilterAttribute());
-            filters.Add(new RequireHttpsInProductionAttribute(new XForwardedProtoHandleNonHttpsWorker()));
+            //filters.Add(new RequireHttpsInProductionAttribute(new XForwardedProtoHandleNonHttpsWorker()));
         }
     }
 }
