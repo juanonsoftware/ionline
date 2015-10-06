@@ -47,12 +47,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Rabbit.Cache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Rabbit.Cache.1.1.0\lib\Rabbit.Cache.dll</HintPath>
+    <Reference Include="Rabbit.Cache, Version=1.1.1.28689, Culture=neutral, PublicKeyToken=8a07e38504ee8667, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Rabbit.Cache.1.1.2\lib\Rabbit.Cache.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Cache.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Rabbit.Cache.Redis.1.1.0\lib\Rabbit.Cache.Redis.dll</HintPath>
+      <HintPath>..\..\packages\Rabbit.Cache.Redis.1.1.1\lib\Rabbit.Cache.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -77,7 +77,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
