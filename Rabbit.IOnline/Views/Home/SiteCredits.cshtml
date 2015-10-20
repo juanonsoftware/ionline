@@ -7,15 +7,15 @@
     </button>
 </div>
 
-@foreach (var category in Model.Categories)
-{
-    <div class="margin-t-20">
-        <a href="@Url.Action("List", "Message", new { catid = category.Category.Key })" class="btn btn-default">
+<div class="margin-t-20">
+    @foreach (var category in Model.Categories)
+    {
+        <a href="@Url.Action("List", "Message", new { catid = category.Category.Key })" class="label label-info">
             @category.Category.Value
             <span class="badge">@category.MessageCount</span>
         </a>
-    </div>   
-}
+    }
+</div>
 
 <div class="margin-t-20">
     <a href="@Url.Action("List", "Message")">
