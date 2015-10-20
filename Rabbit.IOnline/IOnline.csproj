@@ -77,8 +77,8 @@
       <HintPath>..\packages\Rabbit.Configuration.1.0.1\lib\Rabbit.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Rabbit.Foundation, Version=1.0.0.31909, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rabbit.Foundation.1.4.0\lib\Rabbit.Foundation.dll</HintPath>
+    <Reference Include="Rabbit.Foundation, Version=1.0.0.15710, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rabbit.Foundation.1.6.0\lib\Rabbit.Foundation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -94,11 +94,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Web, Version=1.0.5739.17425, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RabbitWeb.1.1.0\lib\Rabbit.Web.dll</HintPath>
+      <HintPath>..\packages\RabbitWeb.1.1.1\lib\Rabbit.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rabbit.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RabbitWebMvc.1.0.2.1\lib\Rabbit.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\RabbitWebMvc.1.1.2.1\lib\Rabbit.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Recaptcha.Web, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
