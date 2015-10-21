@@ -27,7 +27,9 @@
                 <td>
                     @if (message.CategorySelected != null)
                     {
-                        @Html.Raw(message.CategorySelected.Value)
+                        <a href="@Url.Action("List", "Message", new { catid = message.CategorySelected.Key })">
+                            @Html.Raw(message.CategorySelected.Value)
+                        </a>
                     }
                 </td>
                 <td>@message.Body</td>
