@@ -4,6 +4,7 @@ using Rabbit.IWasThere.Common;
 using Rabbit.SerializationMaster;
 using Rabbit.SerializationMaster.ServiceStack;
 using Rabbit.Web.Mvc;
+using Rabbit.Web.Mvc.Security;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -34,6 +35,8 @@ namespace Rabbit.IOnline
         protected override void OnBeforeStart()
         {
             base.OnBeforeStart();
+
+            ModelBinders.Binders.DefaultBinder = new SafeHtmlModelBinder();
 
             SerializationContext.Current.Initialize(new JsonSerializationStrategy());
 

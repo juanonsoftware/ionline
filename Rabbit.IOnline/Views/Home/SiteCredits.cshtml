@@ -2,9 +2,9 @@
 @model SiteCreditsViewModel
 
 <div>
-    <button class="btn btn-primary" type="button">
-        Total messages <span class="badge">@Model.MessageCount</span>
-    </button>
+    <a href="@Url.Action("List", "Message")">All messages
+        <span class="badge">@Model.MessageCount</span>
+    </a>
 </div>
 
 <div class="margin-t-20">
@@ -15,11 +15,4 @@
             <span class="badge">@category.MessageCount</span>
         </a>
     }
-</div>
-
-<div class="margin-t-20">
-    <a href="@Url.Action("List", "Message")">
-        <span class="glyphicon glyphicon-menu-right"></span>
-        List all messages
-    </a>
 </div>
