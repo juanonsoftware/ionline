@@ -5,9 +5,7 @@
     <a href="@Url.Action("List", "Message")">All messages
         <span class="badge">@Model.MessageCount</span>
     </a>
-</div>
 
-<div class="margin-t-20">
     @foreach (var category in Model.Categories)
     {
         <a href="@Url.Action("List", "Message", new { catid = category.Category.Key })" class="label label-info">

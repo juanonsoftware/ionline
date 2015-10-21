@@ -6,30 +6,31 @@
 
 @model IndexViewModel
 
-<div class="well well-sm padding-10">
-    <p class="text-justify">
-        A public place which stores your message of anything. You can leave a message there and it will be kept for so long.
-    </p>
-</div>
-
 <div class="clearfix">
-    <div class="pull-left width-30p">
+    <div class="well well-sm padding-10 pull-left width-30p">
+        <p class="text-justify">
+            A public place which stores your message of anything. You can leave a message there and it will be kept for so long.
+        </p>
+    </div>
+    <div class="pull-left width-70p">
         <h3>Site credits</h3>
         @{ Html.RenderAction("SiteCredits", "Home"); }
     </div>
-    <div class="pull-left width-70p">
-        <h3>Recent messages</h3>
-        <div id="recent-msgs">
-            <div class="spinner-loader">
-                Loading…
-            </div>
-        </div>
-        <h3>Write a message <small>of whatever you want to leave</small></h3>
-        <div>
-            @{Html.RenderPartial("_MessageEditForm", Model.EditMessageViewModel);}
+</div>
+
+<div class="clearfix">
+    <h3>Recent messages</h3>
+    <div id="recent-msgs">
+        <div class="spinner-loader">
+            Loading…
         </div>
     </div>
+    <h3>Write a message <small>of whatever you want to leave</small></h3>
+    <div>
+        @{Html.RenderPartial("_MessageEditForm", Model.EditMessageViewModel);}
+    </div>
 </div>
+
 <script type="text/javascript">
     $(function () {
         $.get('@Url.Action("List", "Message", new
