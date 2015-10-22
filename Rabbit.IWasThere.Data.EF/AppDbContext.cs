@@ -11,7 +11,7 @@ namespace Rabbit.IWasThere.Data.EF
         {
         }
 
-        public IDbSet<Message> Messages { get; set; }
+        public virtual IDbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

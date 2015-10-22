@@ -59,6 +59,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ioc.Autofac", "Rabbit.iOnli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ioc.SimpleInjector", "Rabbit.iOnline.Ioc.SimpleInjector\Ioc.SimpleInjector.csproj", "{AFF18BA1-3646-41F5-A066-43AC2B61D553}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Tests", "6. Tests", "{2D72230E-DAD9-473A-BC59-7EC5FC3825C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.EF.Tests", "Data.EF.Tests\Data.EF.Tests.csproj", "{AF76FD22-D665-401E-AF2F-B05DBF39D302}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +129,10 @@ Global
 		{AFF18BA1-3646-41F5-A066-43AC2B61D553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFF18BA1-3646-41F5-A066-43AC2B61D553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFF18BA1-3646-41F5-A066-43AC2B61D553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF76FD22-D665-401E-AF2F-B05DBF39D302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF76FD22-D665-401E-AF2F-B05DBF39D302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF76FD22-D665-401E-AF2F-B05DBF39D302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF76FD22-D665-401E-AF2F-B05DBF39D302}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,5 +155,6 @@ Global
 		{F8EA6962-80D1-4B6B-A189-746EC8A452A5} = {57F1EAC0-0812-4D2A-8B2B-9303121DD2B9}
 		{C4667B1E-6D83-438C-BED6-89E27FD8C2FB} = {145F704C-A207-47F4-9618-64BAAD196FE7}
 		{B7207135-D76E-4C2F-9379-CDBB508119C6} = {145F704C-A207-47F4-9618-64BAAD196FE7}
+		{AF76FD22-D665-401E-AF2F-B05DBF39D302} = {2D72230E-DAD9-473A-BC59-7EC5FC3825C4}
 	EndGlobalSection
 EndGlobal
