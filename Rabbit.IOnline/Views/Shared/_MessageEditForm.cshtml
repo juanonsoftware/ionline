@@ -4,7 +4,7 @@
 
 @model EditMessageViewModel
 
-<div class="width-50p pull-left">
+<div class="width-50p pull-left" style="padding-right: 10px;">
     <form action="@Url.Action("Save", "Message")" enctype="multipart/form-data" method="POST">
         @Html.ValidationSummary()
 
@@ -26,7 +26,7 @@
         </div>
     </form>
 </div>
-<div class="width-50p pull-left padding-20">
+<div class="width-50p pull-left">
     <div id="preview" class="well well-sm"></div>
 </div>
 
