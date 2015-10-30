@@ -7,12 +7,12 @@
 @model IndexViewModel
 
 <div class="clearfix">
-    <div class="well well-sm padding-10 pull-left width-60p">
+    <div class="well well-sm pull-left width-60p">
         <p class="text-justify">
             A public place which stores your message of anything. You can leave a message there and it will be kept for so long.
         </p>
     </div>
-    <div class="pull-left width-30p margin-10">
+    <div class="well well-sm pull-left width-30p" style="margin-left: 10px;">
         @{ Html.RenderAction("SiteCredits", "Home"); }
     </div>
 </div>
@@ -24,6 +24,8 @@
             Loading…
         </div>
     </div>
+</div>
+<div class="clearfix">
     <h3>Write a message <small>of whatever you want to leave</small></h3>
     <div>
         @{Html.RenderPartial("_MessageEditForm", Model.EditMessageViewModel);}
