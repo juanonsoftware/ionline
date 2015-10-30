@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Rabbit.Configuration;
+﻿using Rabbit.Configuration;
 using Rabbit.Foundation.Data;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Rabbit.IWasThere.Services.DirectImpl
 {
@@ -10,6 +10,7 @@ namespace Rabbit.IWasThere.Services.DirectImpl
         private readonly IConfiguration _configuration;
         private readonly IDataService _dataService;
         private int _pageSize;
+        private int _previewLimit;
         private IList<DataItem> _categories;
 
         public AppSettings(IConfiguration configuration, IDataService dataService)
@@ -31,6 +32,22 @@ namespace Rabbit.IWasThere.Services.DirectImpl
                     }
                 }
                 return _pageSize;
+            }
+        }
+
+        public int PreviewLimit
+        {
+            get
+            {
+                if (_previewLimit <= 0)
+                {
+                    var previewLimit = _configuration.Get("PreviewLimit");
+                    if (!int.TryParse(previewLimit, out _previewLimit))
+                    {
+                        _previewLimit = 50;
+                    }
+                }
+                return _previewLimit;
             }
         }
 

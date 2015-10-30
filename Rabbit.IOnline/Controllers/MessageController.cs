@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
-using PagedList;
+﻿using PagedList;
 using Rabbit.Foundation.Text;
 using Rabbit.Helper;
 using Rabbit.IOnline.Models.ViewModels;
@@ -11,6 +8,9 @@ using Rabbit.IWasThere.Services;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
 using ServiceStack;
+using System;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Rabbit.IOnline.Controllers
 {
@@ -94,7 +94,7 @@ namespace Rabbit.IOnline.Controllers
             var messages = listOfMessages.Select(x => new MessageViewModel()
                 {
                     Id = x.Id,
-                    Body = x.Body.StripMarkdownMarkup().GetSubstring(50, new string[] { " ", "." }),
+                    Body = x.Body.StripMarkdownMarkup().GetSubstring(_appSettings.PreviewLimit, new string[] { " ", "." }),
                     CreatedAt = x.CreatedAt,
                     CategorySelected =
                         _appSettings.Categories.SingleOrDefault(

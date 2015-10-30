@@ -7,6 +7,8 @@ namespace Rabbit.IWasThere.Services
     {
         int PageSize { get; }
 
+        int PreviewLimit { get; }
+
         IList<DataItem> Categories { get; }
     }
 }
