@@ -2,13 +2,13 @@
 @model SiteCreditsViewModel
 
 <div>
-    <a href="@Url.Action("List", "Message")" class="label label-primary">All messages
+    <a href="@Url.Action("List", "Message")" class="label label-primary margin-10">All messages
         <span class="badge">@Model.MessageCount</span>
     </a>
 
     @foreach (var category in Model.Categories)
     {
-        <a href="@Url.Action("List", "Message", new { catid = category.Category.Key })" class="label label-info">
+        <a href="@Url.Action("List", "Message", new { catid = category.Category.Key })" class="label label-info margin-10">
             @category.Category.Value
             <span class="badge">@category.MessageCount</span>
         </a>
