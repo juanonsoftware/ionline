@@ -33,8 +33,6 @@ namespace Data.EF.Tests
             Assert.AreEqual(2, messages.Count());
             Assert.IsTrue(messages.Any(x => x.Body == "B1"));
             Assert.IsTrue(messages.Any(x => x.Body == "B2"));
-
-            Assert.Fail("Force to fail");
         }
 
         private void SetupForGetMessages()
